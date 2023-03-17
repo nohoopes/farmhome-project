@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-order-card',
   templateUrl: './order-card.component.html',
-  styleUrls: ['./order-card.component.scss']
+  styleUrls: ['../../scss/index.scss']
 })
 export class OrderCardComponent {
 

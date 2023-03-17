@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-update-product-dialog',
   templateUrl: './update-product-dialog.component.html',
-  styleUrls: ['./update-product-dialog.component.scss']
+  styleUrls: ['../../scss/index.scss']
 })
 export class UpdateProductDialogComponent {
 
