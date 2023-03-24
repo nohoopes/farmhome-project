@@ -1,0 +1,43 @@
+header {
+  .header-container {
+    background: #0000;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .header-left {
+      width: 120px;
+      .logo {
+        width: 120px;
+        height: 80px;
+      }
+    }
+    .header-right {
+      margin-left: auto;
+      margin-right: 10px;
+      .menu-btn {
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        font-weight: 500;
+        color: #fff;
+        padding: 5px 15px;
+        margin-right: 20px;
+        background: #2d473f;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        transition-duration: 0.5s;
+        &:hover {
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
+          padding: 7px 17px;
+          transition-duration: 0.5s;
+        }
+      }
+      .farmer-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
