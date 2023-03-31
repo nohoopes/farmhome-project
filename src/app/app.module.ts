@@ -10,18 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';;
 import { MatMenuModule } from '@angular/material/menu';
 
 import { MatListModule } from '@angular/material/list';
 import {} from '@angular/material/form-field';
 import {} from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { DatePipe } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-
 
 import { AddProductDialogComponent } from './components/add-product-dialog/add-product-dialog.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -35,6 +31,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AgricuturalProductComponent } from './pages/agricutural-product/agricutural-product.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +46,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ChattingComponent,
     LoginComponent,
     RegisterComponent,
+    AgricuturalProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,9 +59,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
-    provideAuth(() => getAuth()),
-    provideStorage(() => getStorage()),
-    provideFirestore(() => getFirestore()),
     MatMenuModule,
     MatListModule,
     MatInputModule,
@@ -71,8 +66,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatAutocompleteModule,
     MatDividerModule,
     FontAwesomeModule,
+  
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
