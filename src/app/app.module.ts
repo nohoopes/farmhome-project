@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { provideAuth, getAuth } from '@angular/fire/auth';;
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -32,6 +34,7 @@ import { RegisterComponent } from './pages/register/register.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgricuturalProductComponent } from './pages/agricutural-product/agricutural-product.component';
+import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { AgricuturalProductComponent } from './pages/agricutural-product/agricut
     LoginComponent,
     RegisterComponent,
     AgricuturalProductComponent,
+    SuggestPriceComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,9 +67,11 @@ import { AgricuturalProductComponent } from './pages/agricutural-product/agricut
     MatListModule,
     MatInputModule,
     MatFormFieldModule,
+    MatProgressBarModule,
     MatAutocompleteModule,
     MatDividerModule,
     FontAwesomeModule,
+    HttpClientModule,
   
   ],
   providers: [],

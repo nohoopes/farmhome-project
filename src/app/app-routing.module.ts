@@ -4,6 +4,7 @@ import { AgricuturalProductComponent } from './pages/agricutural-product/agricut
 import { ChattingComponent } from './pages/chatting/chatting.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'product', component: AgricuturalProductComponent },
+  { path: 'price', component: SuggestPriceComponent },
 ];
 
 

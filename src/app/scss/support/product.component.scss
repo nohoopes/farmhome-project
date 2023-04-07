@@ -1,31 +1,45 @@
 .product-container {
   width: 1340px;
   height: 600px;
-  background: #fff;
+  background: #e6e8e4;
   border-radius: 20px;
   position: relative;
   margin-left: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
   box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+  .product-head {
 
-  #add-product-btn {
-    border: none;
-    background: #4fb75a;
-    color: #fff;
-    font-weight: 500;
-    width: 250px;
-    height: 40px;
-    border-radius: 10px;
-    float: right;
-    margin-top: 15px;
-    margin-right: 15px;
-    transition-duration: 0.5s;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 
-    &:hover {
-      transform: scale(1.05);
-      background: #48a451;
+    p {
+      margin-top: 15px;
+      margin-left: 15px;
+      font-size: 18px;
+      font-weight: 700;
+
+    }
+
+    #add-product-btn {
+      border: none;
+      background: #4fb75a;
+      color: #fff;
+      font-weight: 500;
+      width: 250px;
+      height: 40px;
+      border-radius: 10px;
+      float: right;
+      margin-top: 15px;
+      margin-right: 15px;
       transition-duration: 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+        background: #48a451;
+        transition-duration: 0.5s;
+      }
     }
   }
 
@@ -43,16 +57,16 @@
       flex-direction: column;
       background: #f7f3ec;
       position: relative;
-      width: 580px;
+      width: 520px;
       height: 92%;
-      margin-left: 60px;
+      margin-left: 80px;
       margin-bottom: 30px;
       border-radius: 15px;
       &__content {
         display: flex;
 
         h3 {
-          font-size: 17pt;
+          font-size: 14pt;
           font-weight: 700;
         }
 
@@ -83,32 +97,31 @@
           height: 200px;
           border-radius: 20px;
           margin-top: 35px;
-          margin-left: -60px;
-        }
-
-        .mp-icons {
-          width: 40px;
-          height: 40px;
-          margin: 10px;
-          .mp-icon {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition-duration: 0.5s;
-
-            &:hover {
-              transform: scale(1.05);
-            }
-          }
+          margin-left: -80px;
         }
       }
 
       &__button {
         margin-bottom: 20px;
-        margin-left: 200px;
+        margin-left: 10px;
         display: flex;
         flex-direction: row;
+        align-items: center;
+
+        .sg_price {
+          font-size: 13pt;
+          font-weight: 500;
+          margin-right: 20px;
+          padding: 8px;
+          background: #1ba457;
+          border-radius: 5px;
+          box-shadow: 4px 4px 4px rgba(146, 66, 66, 0.25);
+          h5 {
+            color: #fff;
+            font-size: 12pt;
+            margin-bottom: -2px;
+          }
+        }
 
         button {
           margin-right: 20px;

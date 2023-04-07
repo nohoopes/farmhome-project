@@ -1,103 +1,45 @@
 <div class="product-container">
-  <button class="add-product-btn" id="add-product-btn">
-    + Add new product
-  </button>
-  <div class="product-cards">
-    <!--Card-->
-    <div class="product-card">
-      <div class="product-card__content">
-        <h3 class="product-id">#1</h3>
-        <img class="product-img" src="../../../assets/fruit_demo.png" />
-        <div class="product-contain">
-          <h3 class="product-name">Product Name</h3>
-          <ul>
-            <li>Having: 1000kg</li>
-            <li>Remaining: 1000kg</li>
-            <li>Season: Spring</li>
-            <li>Date: 01-01-2023</li>
-            <li>Description: Trai cay mua xuan nam ay chung ta tim ve</li>
-          </ul>
-        </div>
-        <a class="mp-icons">
-          <img class="mp-icon" src="../../../assets/images/icon/price.png" />
-        </a>
-      </div>
-      <div class="product-card__button">
-        <button id="update-product-btn">Update</button>
-        <button id="delete-product-btn">Detele</button>
-      </div>
-    </div>
-    <!--Card-->
-    <div class="product-card">
-      <div class="product-card__content">
-        <h3 class="product-id">#1</h3>
-        <img class="product-img" src="../../../assets/fruit_demo.png" />
-        <div class="product-contain">
-          <h3 class="product-name">Product Name</h3>
-          <ul>
-            <li>Having: 1000kg</li>
-            <li>Remaining: 1000kg</li>
-            <li>Season: Spring</li>
-            <li>Date: 01-01-2023</li>
-            <li>Description: Trai cay mua xuan nam ay chung ta tim ve</li>
-          </ul>
-        </div>
-        <a class="mp-icons">
-          <img class="mp-icon" src="../../../assets/images/icon/price.png" />
-        </a>
-      </div>
-      <div class="product-card__button">
-        <button id="update-product-btn">Update</button>
-        <button id="delete-product-btn">Detele</button>
-      </div>
-    </div>
-     <!--Card-->
-     <div class="product-card">
-        <div class="product-card__content">
-          <h3 class="product-id">#1</h3>
-          <img class="product-img" src="../../../assets/fruit_demo.png" />
-          <div class="product-contain">
-            <h3 class="product-name">Product Name</h3>
-            <ul>
-              <li>Having: 1000kg</li>
-              <li>Remaining: 1000kg</li>
-              <li>Season: Spring</li>
-              <li>Date: 01-01-2023</li>
-              <li>Description: Trai cay mua xuan nam ay chung ta tim ve</li>
-            </ul>
-          </div>
-          <a class="mp-icons">
-            <img class="mp-icon" src="../../../assets/images/icon/price.png" />
-          </a>
-        </div>
-        <div class="product-card__button">
-          <button id="update-product-btn">Update</button>
-          <button id="delete-product-btn">Detele</button>
-        </div>
-      </div>
-       <!--Card-->
-    <div class="product-card">
-        <div class="product-card__content">
-          <h3 class="product-id">#1</h3>
-          <img class="product-img" src="../../../assets/fruit_demo.png" />
-          <div class="product-contain">
-            <h3 class="product-name">Product Name</h3>
-            <ul>
-              <li>Having: 1000kg</li>
-              <li>Remaining: 1000kg</li>
-              <li>Season: Spring</li>
-              <li>Date: 01-01-2023</li>
-              <li>Description: Trai cay mua xuan nam ay chung ta tim ve</li>
-            </ul>
-          </div>
-          <a class="mp-icons">
-            <img class="mp-icon" src="../../../assets/images/icon/price.png" />
-          </a>
-        </div>
-        <div class="product-card__button">
-          <button id="update-product-btn">Update</button>
-          <button id="delete-product-btn">Detele</button>
-        </div>
-      </div>
+  <div class="product-head">
+    <p>{{ today | date : "dd/MM/yyyy" }}</p>
+    <button class="add-product-btn" id="add-product-btn">
+      + Add new product
+    </button>
   </div>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div class="product-cards">
+    <ng-container *ngFor="let p of products; let i = index">
+      <!--Card-->
+      <div class="product-card">
+        <div class="product-card__content">
+          <h3 class="product-id">#{{ p.id }}</h3>
+          <img class="product-img" src="{{ p.images[0].url }}" />
+          <div class="product-contain">
+            <h3 class="product-name">{{ p.name }}</h3>
+            <ul>
+              <li>Having: {{ p.weight }}{{ p.unit }}</li>
+              <li>Remaining: {{ p.remainingWeight }}{{ p.unit }}</li>
+              <li>Season: {{ p.season }}</li>
+              <li>Date: {{ p.date }}</li>
+              <li>
+                Description: {{ p.description }} Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Officia laudantium provident
+                labore at quos.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-card__button">
+          <div class="sg_price">
+            <h5>
+              Recommend: <br />
+              {{ p.suggestPrice }}
+            </h5>
+          </div>
+          <button id="update-product-btn">Update</button>
+          <button id="delete-product-btn">Delete</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 </div>
