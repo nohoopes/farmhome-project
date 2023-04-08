@@ -35,6 +35,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgricuturalProductComponent } from './pages/agricutural-product/agricutural-product.component';
 import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
+import { OrderComponent } from './pages/order/order.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.compo
     RegisterComponent,
     AgricuturalProductComponent,
     SuggestPriceComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@
   margin-top: 30px;
   margin-bottom: 30px;
   box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+
   .product-head {
 
     display: flex;
@@ -52,16 +53,19 @@
     grid-template-columns: 1fr 1fr;
     border-radius: 0 0 20px 20px;
     overflow-y: auto;
+
     .product-card {
       display: flex;
       flex-direction: column;
-      background: #f7f3ec;
+      background: #f2ebde;
       position: relative;
       width: 520px;
       height: 92%;
       margin-left: 80px;
       margin-bottom: 30px;
       border-radius: 15px;
+      box-shadow: 4px 4px 4px rgba(16, 35, 14, 0.25);
+
       &__content {
         display: flex;
 
@@ -78,6 +82,7 @@
           margin-top: 30px;
 
           margin-right: -10px;
+
           ul {
             text-decoration: none;
             list-style-type: none;
@@ -87,6 +92,7 @@
               margin: 10px 0;
             }
           }
+
           .product-name {
             margin: 5px 30px;
           }
@@ -112,13 +118,15 @@
           font-size: 13pt;
           font-weight: 500;
           margin-right: 20px;
+          text-align: center;
           padding: 8px;
           background: #1ba457;
           border-radius: 5px;
           box-shadow: 4px 4px 4px rgba(146, 66, 66, 0.25);
+
           h5 {
             color: #fff;
-            font-size: 12pt;
+            font-size: 11pt;
             margin-bottom: -2px;
           }
         }
@@ -133,15 +141,19 @@
           color: #fff;
           transition-duration: 0.5s;
         }
+
         #update-product-btn {
           background: #31828b;
+
           &:hover {
             transform: scale(1.05);
             background: #286a71;
           }
         }
+
         #delete-product-btn {
           background: #bd5f5f;
+
           &:hover {
             transform: scale(1.05);
             background: #994c4c;

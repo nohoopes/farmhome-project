@@ -5,7 +5,11 @@
       + Add new product
     </button>
   </div>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar style="margin-top: 5px"
+    color="accent"
+    *ngIf="loading"
+    mode="indeterminate"
+  ></mat-progress-bar>
   <div class="product-cards">
     <ng-container *ngFor="let p of products; let i = index">
       <!--Card-->
@@ -19,7 +23,7 @@
               <li>Having: {{ p.weight }}{{ p.unit }}</li>
               <li>Remaining: {{ p.remainingWeight }}{{ p.unit }}</li>
               <li>Season: {{ p.season }}</li>
-              <li>Date: {{ p.date }}</li>
+              <li>Date: {{ p.date | date : "dd/MM/yyyy" }}</li>
               <li>
                 Description: {{ p.description }} Lorem ipsum dolor sit amet
                 consectetur adipisicing elit. Officia laudantium provident
@@ -31,7 +35,7 @@
         <div class="product-card__button">
           <div class="sg_price">
             <h5>
-              Recommend: <br />
+              Recommend <br />
               {{ p.suggestPrice }}
             </h5>
           </div>
@@ -41,5 +45,4 @@
       </div>
     </ng-container>
   </div>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 </div>
