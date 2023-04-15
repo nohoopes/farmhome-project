@@ -6,9 +6,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
 import { OrderComponent } from './pages/order/order.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'chatting', component: ChattingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

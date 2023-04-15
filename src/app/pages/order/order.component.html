@@ -6,7 +6,7 @@
       *ngIf="loading"
       mode="indeterminate"
     ></mat-progress-bar>
-    <ng-container *ngFor="let o of orders.slice().reverse(); let i = index">
+    <ng-container *ngFor="let o of orders; let i = index">
       <div class="order-card">
         <img class="order-img" src="{{ o.fruit.images[0].url }}" />
         <div class="order-info">

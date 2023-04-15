@@ -5,7 +5,8 @@
       + Add new product
     </button>
   </div>
-  <mat-progress-bar style="margin-top: 5px"
+  <mat-progress-bar
+    style="margin-top: 5px"
     color="accent"
     *ngIf="loading"
     mode="indeterminate"
@@ -15,30 +16,30 @@
       <!--Card-->
       <div class="product-card">
         <div class="product-card__content">
-          <h3 class="product-id">#{{ p.id }}</h3>
+          <h3 class="product-id"></h3>
           <img class="product-img" src="{{ p.images[0].url }}" />
           <div class="product-contain">
-            <h3 class="product-name">{{ p.name }}</h3>
+            <h3 class="product-name">#{{ p.id }} {{ p.name }}</h3>
             <ul>
               <li>Having: {{ p.weight }}{{ p.unit }}</li>
               <li>Remaining: {{ p.remainingWeight }}{{ p.unit }}</li>
               <li>Season: {{ p.season }}</li>
               <li>Date: {{ p.date | date : "dd/MM/yyyy" }}</li>
-              <li>
+              <li style="width: 150%;">
                 Description: {{ p.description }} Lorem ipsum dolor sit amet
                 consectetur adipisicing elit. Officia laudantium provident
                 labore at quos.
               </li>
             </ul>
           </div>
-        </div>
-        <div class="product-card__button">
           <div class="sg_price">
             <h5>
-              Recommend <br />
+              Benchmark price <br />
               {{ p.suggestPrice }}
             </h5>
           </div>
+        </div>
+        <div class="product-card__button">
           <button id="update-product-btn">Update</button>
           <button id="delete-product-btn">Delete</button>
         </div>

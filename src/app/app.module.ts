@@ -36,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgricuturalProductComponent } from './pages/agricutural-product/agricutural-product.component';
 import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
 import { OrderComponent } from './pages/order/order.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { OrderComponent } from './pages/order/order.component';
     AgricuturalProductComponent,
     SuggestPriceComponent,
     OrderComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
