@@ -9,6 +9,7 @@ import { Order } from 'src/app/models/orders';
   styleUrls: ['../../scss/index.scss'],
 })
 export class OrderComponent implements OnInit {
+  //Declare
   baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
 
   size: any;
@@ -20,7 +21,10 @@ export class OrderComponent implements OnInit {
   today: Date = new Date();
 
   loading: boolean = false;
+  
+  panelOpenState = false;
 
+  //Function
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -34,5 +38,4 @@ export class OrderComponent implements OnInit {
         this.loading = false;
       });
   }
-
 }

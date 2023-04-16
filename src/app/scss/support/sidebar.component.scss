@@ -11,17 +11,31 @@
     margin-bottom: 30px;
     box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
 
+    .hide {
+        margin-top: -15px;
+        display: none;
+        font-weight: 600;
+        transition: 0;
+    }
+
+    .side-icons:hover+.hide {
+        display: block;
+        color: #1F4136;
+        transition-delay: 1s;
+
+    }
+
     .side-icons {
         position: relative;
         top: 15px;
-        margin-bottom: 35px;
+        margin-bottom: 33px;
 
         :hover {
             background: #61be75;
             border-radius: 10px;
             padding: 5px;
             transform: scale(1.1);
-            transition-duration: 0.5s;
+            transition-duration: 0.2s;
         }
 
         .side-icon {
@@ -29,12 +43,12 @@
             width: 40px;
             height: 40px;
             cursor: pointer;
-            transition-duration: 0.5s;
+            transition-duration: 0.2s;
         }
 
 
     }
-    
+
     .list-item-active {
         background: #61be75;
         border-radius: 10px;

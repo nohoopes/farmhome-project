@@ -1,34 +1,79 @@
 <div class="order-container">
+  <mat-progress-bar style="margin-top: -568px" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   <div class="order-cards">
-    <mat-progress-bar
-      style="margin-top: 5px"
-      color="accent"
-      *ngIf="loading"
-      mode="indeterminate"
-    ></mat-progress-bar>
     <ng-container *ngFor="let o of orders; let i = index">
-      <div class="order-card">
-        <img class="order-img" src="{{ o.fruit.images[0].url }}" />
-        <div class="order-info">
-          <h2>Order: {{o.fruit.name}}</h2>
-          <ul>
-            <li>Amount: {{o.amount}}</li>
-            <li>Price: {{o.price}}000</li>
-            <li>Transport: {{o.transport}}</li>
-            <li>Date: {{ o.date | date : "dd/MM/yyyy" }}</li>
-          </ul>
+      <div class="order-card-full">
+        <div class="order-card">
+          <img class="order-img" src="{{ o.fruit.images[0].url }}" />
+          <div class="order-info">
+            <h2>Order: {{ o.fruit.name }}</h2>
+            <ul>
+              <li>
+                Amount: <b> {{ o.amount }} </b>
+              </li>
+              <li>
+                Price: <b> {{ o.price }}000 </b>
+              </li>
+              <li>Transport: {{ o.transport ? "Yes" : "No" }}</li>
+              <li>Date: {{ o.date | date : "dd/MM/yyyy" }}</li>
+            </ul>
+          </div>
+          <h2 class="order-id">#{{ o.id }}</h2>
+          <div class="merchant-info">
+            <h2>{{ o.merchant.firstName }} {{ o.merchant.lastName }}</h2>
+            <h3>{{ o.merchant.phone }}</h3>
+            <h3>
+              {{ o.merchant.location.address }},
+              {{ o.merchant.location.ward.name }},
+              {{ o.merchant.location.ward.district.name }},
+              {{ o.merchant.location.ward.district.province.name }}
+            </h3>
+          </div>
         </div>
-        <div class="merchant-info">
-          <h2>{{o.merchant.firstName}} {{o.merchant.lastName}}</h2>
-          <h3>{{o.merchant.phone}}</h3>
-          <h3>{{o.merchant.location.address}}, {{o.merchant.location.ward.name}}, {{o.merchant.location.ward.district.name}}, {{o.merchant.location.ward.district.province.name}}</h3>
-        </div>
-        <div class="order-btn">
-          <button id="btn-accept">Accept</button>
-          <button id="btn-discuss">Discuss</button>
-          <button id="btn-decline">Decline</button>
-        </div>
-        <h2 class="order-id">#{{ o.id }}</h2>
+        <mat-accordion>
+          <!--Accept-->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title> Click to Accept </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="collapse-content">
+              <p>Are you sure you agree with this order?</p>
+              <button id="btn-accept">Accept</button>
+            </div>
+          </mat-expansion-panel>
+          <!--Discuss-->
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Click to Discuss </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="collapse-content">
+              <div class="discuss-text">
+                <label for="deal-price">Deal Price (000VND)</label>
+                <input type="text" id="deal-price" name="deal-price" placeholder="Deal price.." />
+              </div>
+              <div class="discuss-text">
+                <label for="amount">Deal amount (kg)</label>
+                <input type="text" id="deal-amount" name="deal-amount" placeholder="Deal amount.." />
+              </div>
+
+              <button id="btn-discuss">Discuss</button>
+            </div>
+          </mat-expansion-panel>
+          <!--Decline-->
+          <mat-expansion-panel style="border-radius: 0 0 10px 10px" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Click to Decline </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="collapse-content">
+              <div class="decline-text">
+                <input type="text" id="decline-text" name="decline-text"
+                  placeholder="The reason why you reject this order.." />
+              </div>
+              <button id="btn-decline">Decline</button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
     </ng-container>
   </div>
