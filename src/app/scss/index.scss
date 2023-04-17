@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap");
 * {
   font-family: "Inter", sans-serif !important;
 }
@@ -10,12 +9,12 @@ body {
 }
 
 @import "./support/login-page.component.scss",
-  "./support/register-page.component.scss",
-  "./support/add-product-dialog.component.scss",
-  "./support/header.component.scss", "./support/history-card.component.scss",
-  "./support/order-card.component.scss", "./support/product-card.component.scss",
-  "./support/sidebar.component.scss",
-  "./support/update-product-dialog.component.scss",
-  "./support/chatting.component.scss", "./support/product.component.scss",
-  "./support/suggest-price.component.scss", "./support/order.component.scss",
-  "./support/home.component.scss";
+"./support/register-page.component.scss",
+"./support/add-product-dialog.component.scss",
+"./support/header.component.scss", "./support/history-card.component.scss",
+"./support/order-card.component.scss", "./support/product-card.component.scss",
+"./support/sidebar.component.scss",
+"./support/update-product-dialog.component.scss",
+"./support/chatting.component.scss", "./support/product.component.scss",
+"./support/suggest-price.component.scss", "./support/order.component.scss",
+"./support/home.component.scss";

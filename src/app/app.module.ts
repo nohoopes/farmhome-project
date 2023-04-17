@@ -12,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { provideAuth, getAuth } from '@angular/fire/auth';;
 import { MatMenuModule } from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 
