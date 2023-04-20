@@ -20,9 +20,8 @@
 
     .side-icons:hover+.hide {
         display: block;
-        color: #1F4136;
+        color: #1f4136;
         transition-delay: 1s;
-
     }
 
     .side-icons {
@@ -45,8 +44,6 @@
             cursor: pointer;
             transition-duration: 0.2s;
         }
-
-
     }
 
     .list-item-active {

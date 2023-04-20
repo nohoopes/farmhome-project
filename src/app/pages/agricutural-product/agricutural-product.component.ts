@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AddProductDialogComponent } from 'src/app/components/add-product-dialog/add-product-dialog.component';
 import { Product } from 'src/app/models/products';
 
 @Component({
@@ -21,7 +23,7 @@ export class AgricuturalProductComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -35,4 +37,9 @@ export class AgricuturalProductComponent implements OnInit {
       });
   }
 
+  openAddProductDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    this.dialog.open(AddProductDialogComponent, dialogConfig);
+  }
 }

@@ -1,7 +1,7 @@
 <div class="product-container">
   <div class="product-head">
     <p>{{ today | date : "dd/MM/yyyy" }}</p>
-    <button class="add-product-btn" id="add-product-btn">
+    <button class="add-product-btn" id="add-product-btn" (click)=" openAddProductDialog()">
       + Add new product
     </button>
   </div>

@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AddProductDialogComponent {
 
+  today: Date = new Date();
+
+  imageUrl: string = "../../../assets/fruit_example.png";
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageUrl = reader.result as string;
+      };
+    }
+  }
+
 }
