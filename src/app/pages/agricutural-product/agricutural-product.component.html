@@ -1,48 +1,114 @@
 <div class="product-container">
   <div class="product-head">
     <p>{{ today | date : "dd/MM/yyyy" }}</p>
-    <button class="add-product-btn" id="add-product-btn" (click)=" openAddProductDialog()">
+    <button class="add-product-btn" id="add-product-btn" (click)="openAddProductDialog()">
       + Add new product
     </button>
   </div>
-  <mat-progress-bar
-    style="margin-top: 5px"
-    color="accent"
-    *ngIf="loading"
-    mode="indeterminate"
-  ></mat-progress-bar>
+  <mat-progress-bar style="margin-top: 5px" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   <div class="product-cards">
     <ng-container *ngFor="let p of products; let i = index">
       <!--Card-->
-      <div class="product-card">
-        <div class="product-card__content">
-          <h3 class="product-id"></h3>
-          <img class="product-img" src="{{ p.images[0].url }}" />
-          <div class="product-contain">
-            <h3 class="product-name">#{{ p.id }} {{ p.name }}</h3>
-            <ul>
-              <li>Having: <b>{{ p.weight }}{{ p.unit }}</b></li>
-              <li>Remaining:<b> {{ p.remainingWeight }}{{ p.unit }}</b></li>
-              <li>Season: {{ p.season }}</li>
-              <li>Date: {{ p.date | date : "dd/MM/yyyy" }}</li>
-              <li style="width: 150%;">
-                Description: {{ p.description }} Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Officia laudantium provident
-                labore at quos.
-              </li>
-            </ul>
+      <div class="product-card-full">
+        <div class="product-card">
+          <div class="product-card__content">
+            <h3 class="product-id"></h3>
+            <img class="product-img" src="{{ p.images[0].url }}" />
+            <div class="product-contain">
+              <h3 class="product-name">#{{ p.id }} {{ p.name }}</h3>
+              <ul>
+                <li>
+                  Having: <b>{{ p.weight }}{{ p.unit }}</b>
+                </li>
+                <li>
+                  Remaining:<b> {{ p.remainingWeight }}{{ p.unit }}</b>
+                </li>
+                <li>Season: {{ p.season }}</li>
+                <li>Date: {{ p.date | date : "dd/MM/yyyy" }}</li>
+                <li style="width: 150%">Description: {{ p.description }}.</li>
+              </ul>
+            </div>
+            <div class="sg_price">
+              <h5>
+                Market price <br />
+                {{ p.suggestPrice }}
+              </h5>
+            </div>
           </div>
-          <div class="sg_price">
-            <h5>
-              Market price <br />
-              {{ p.suggestPrice }}
-            </h5>
-          </div>
+
         </div>
-        <div class="product-card__button">
-          <button id="update-product-btn">Update</button>
-          <button id="delete-product-btn">Delete</button>
-        </div>
+        <mat-accordion>
+          <!--Delete-->
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: rgb(192, 0, 0);"> Click to Delete </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="collapse-p-content">
+              <p>Are you sure to delete this product?</p>
+              <button id="delete-product-btn" (click)="deleteProduct( p.id.toString())">Delete</button>
+            </div>
+          </mat-expansion-panel>
+          <!--Update-->
+          <mat-expansion-panel hideToggle (opened)="panelOpenState = true" style="border-radius: 0 0 10px 10px"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: rgb(10, 41, 14);"> Click to Update </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="collapse-p-content">
+                <div class="add-product-container__col1">
+                  <img *ngIf="imageUrl" [src]="imageUrl" />
+                  <input type="file" id="myPImg" name="myPImg" />
+                  <label for="myPImg" class="custom-file-upload">Choose File</label>
+                </div>
+                <div class="add-product-container__col2">
+                  <div class="input-product-info">
+                    <label class="add-p-label" for="add-p-name">Product name</label>
+                    <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." [value]="p.name" required />
+                  </div>
+                  <div class="add-product-container__col2__row2">
+                    <div class="input-product-info">
+                      <label class="add-p-label" for="add-p-weight">Weight</label>
+                      <input type="text" id="add-p-weight" name="add-p-weight" placeholder="Weight.." required />
+                    </div>
+                    <div class="input-product-info">
+                      <label class="add-p-label" for="add-p-season">Season</label>
+                      <select required>
+                        <option value="0">Select season:</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="add-product-container__col2__row2">
+                    <div class="input-product-info">
+                      <label class="add-p-label" for="add-p-date">Date</label>
+                      <p style="color: #000 !important">
+                        {{ today | date : "yyyy-MM-dd" }}
+                      </p>
+                    </div>
+                    <div class="input-product-info">
+                      <label class="add-p-label" for="add-p-category">Category</label>
+                      <select>
+                        <option value="1">Fruit</option>
+                        <option value="2">Vegetable</option>
+                        <option value="3">Flower</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="input-product-info" style="margin-top: -13px !important">
+                    <label class="add-p-label" for="add-p-description">Description</label>
+                    <textarea required></textarea>
+                  </div>
+                  <div mat-dialog-actions class="add-product-container__col2__row2"
+                    style="margin-top: -8px; padding: 0 !important">
+                    <button id="add-p-btn">Add</button>
+                  </div>
+                </div>
+              </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
     </ng-container>
   </div>

@@ -12,47 +12,51 @@
     <div class="add-product-container__col2">
         <div class="input-product-info">
             <label class="add-p-label" for="add-p-name">Product name</label>
-            <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." />
+            <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." required
+                (input)="changeName($any($event.target).value)" />
         </div>
         <div class="add-product-container__col2__row2">
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-weight">Weight</label>
-                <input type="text" id="add-p-weight" name="add-p-weight" placeholder="Weight.." />
+                <input type="text" id="add-p-weight" name="add-p-weight" placeholder="Weight.." required
+                    (input)="changeWeight($any($event.target).value)" />
             </div>
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-season">Season</label>
-                <select>
+                <select required (change)="changeSeason($any($event.target).value)">
                     <option value="0">Select season:</option>
-                    <option value="1">Spring</option>
-                    <option value="2">Summer</option>
-                    <option value="3">Autumn</option>
-                    <option value="4">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Autumn">Autumn</option>
+                    <option value="Winter">Winter</option>
                 </select>
             </div>
         </div>
         <div class="add-product-container__col2__row2">
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-date">Date</label>
-                <p style="color: #000 !important">{{ today | date : "dd/MM/yyyy" }}</p>
+                <p style="color: #000 !important">
+                    {{ today | date : "yyyy-MM-dd" }}
+                </p>
             </div>
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-category">Category</label>
                 <select>
-                    <option value="0">Select car:</option>
-                    <option value="1">Audi</option>
-                    <option value="2">BMW</option>
-                    <option value="3">Citroen</option>
-                    <option value="4">Ford</option>
+                    <option value="1">Fruit</option>
+                    <option value="2">Vegetable</option>
+                    <option value="3">Flower</option>
                 </select>
             </div>
         </div>
         <div class="input-product-info" style="margin-top: -13px !important">
-            <label class="add-p-label"  for="add-p-description">Description</label>
-            <textarea></textarea>
+            <label class="add-p-label" for="add-p-description">Description</label>
+            <textarea required (input)="changeDescription($any($event.target).value)"></textarea>
         </div>
-        <div mat-dialog-actions class="add-product-container__col2__row2" style="margin-top: -8px; padding: 0 !important">
-            <button id="add-p-btn">Add</button>
+        <div mat-dialog-actions class="add-product-container__col2__row2"
+            style="margin-top: -8px; padding: 0 !important">
+            <button id="add-p-btn" (click)="addProduct()">Add</button>
             <button mat-dialog-close id="cancel-p-btn">Cancel</button>
         </div>
     </div>
 </div>
+<mat-progress-bar color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>

@@ -1,5 +1,5 @@
 export class Product {
-    id?: number = 0;
+    id: number = 0;
     name: string = '';
     weight: number = 0;
     remainingWeight: number = 0;

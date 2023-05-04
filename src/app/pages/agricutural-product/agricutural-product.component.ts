@@ -11,7 +11,10 @@ import { Product } from 'src/app/models/products';
   styleUrls: ['../../scss/index.scss'],
 })
 export class AgricuturalProductComponent implements OnInit {
+
   baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
+
+  imageUrl: string = '../../../assets/fruit_example.png';
 
   size: any;
 
@@ -23,12 +26,18 @@ export class AgricuturalProductComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {}
+  panelOpenState = false;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.http
-      .get(this.baseApiUrl + '/fruit/farmer/' + 9 + '?no=0&limit=100')
+      .get(this.baseApiUrl + '/fruit/farmer/' + 2 + '?no=0&limit=100')
       .subscribe((res: any) => {
         this.products = res.contents;
         this.size = res.contents.length;
@@ -41,5 +50,27 @@ export class AgricuturalProductComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     this.dialog.open(AddProductDialogComponent, dialogConfig);
+  }
+
+  deleteProduct(id: string) {
+    let confirmAction = confirm('Are you sure to delete this?');
+    if (confirmAction) {
+      this.loading = true;
+      this.http.delete(this.baseApiUrl + '/fruit/delete/' + id).subscribe({
+        next: (response) => {
+          this.router.navigate(['agricultural']);
+          alert('Delete successfully! 😀');
+          this.loading = false;
+          this.ngOnInit();
+        },
+        error: (products) => {
+          console.log(products);
+          alert('Something went wrong! Please try again later 😢');
+          this.loading = false;
+        },
+      });
+    } else {
+      alert('Action canceled');
+    }
   }
 }
