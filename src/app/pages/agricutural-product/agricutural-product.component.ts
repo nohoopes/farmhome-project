@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { AddProductDialogComponent } from 'src/app/components/add-product-dialog/add-product-dialog.component';
 import { Product } from 'src/app/models/products';
 
@@ -54,7 +55,6 @@ export class AgricuturalProductComponent implements OnInit {
     this.dialog.open(AddProductDialogComponent, dialogConfig);
   }
 
-  
   onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
     const reader = new FileReader();
@@ -62,6 +62,53 @@ export class AgricuturalProductComponent implements OnInit {
     reader.onload = () => {
       this.imageUrl = reader.result as string;
     };
+  }
+
+  formatDate(date = new Date()) {
+    const year = date.toLocaleString('default', { year: 'numeric' });
+    const month = date.toLocaleString('default', { month: '2-digit' });
+    const day = date.toLocaleString('default', { day: '2-digit' });
+
+    return [year, month, day].join('-');
+  }
+
+  updateProduct(id:string, weight:string, name:string, season:string, description:string) {
+    this.loading = true;
+    var formData: any = new FormData();
+    if(this.imageUrl !='') {
+      formData.append('images', this.selectedFile, this.selectedFile.name);
+    }
+    formData.append(
+      'fruit',
+      JSON.stringify({
+        id: id,
+        weight: weight,
+        name: name,
+        unit: 'kg',
+        date: this.formatDate(),
+        season: season,
+        description: description,
+        popular: true,
+      })
+    );
+    console.log(formData);
+    this.http
+      .put(this.baseApiUrl + '/admin/fruit/update', formData)
+      .pipe(
+        tap({
+          next: (response: any) => {
+            console.log(response);
+            this.loading = false;
+            alert('Update the agricultural product successfully!');
+            this.ngOnInit();
+          },
+          error: (error: any) => {
+            console.log(error);
+            alert('Something went wrong! Please try again later 😢');
+          },
+        })
+      )
+      .subscribe();
   }
 
   deleteProduct(id: string) {
