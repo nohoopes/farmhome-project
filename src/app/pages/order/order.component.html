@@ -38,7 +38,7 @@
             </mat-expansion-panel-header>
             <div class="collapse-content">
               <p>Are you sure you agree with this order?</p>
-              <button id="btn-accept">Accept</button>
+              <button id="btn-accept" (click)="acceptOrder(o.id.toString())">Accept</button>
             </div>
           </mat-expansion-panel>
           <!--Discuss-->
@@ -49,14 +49,13 @@
             <div class="collapse-content">
               <div class="discuss-text">
                 <label for="deal-price">Deal Price (000VND)</label>
-                <input type="text" id="deal-price" name="deal-price" placeholder="Deal price.." />
+                <input type="text" id="deal-price" name="deal-price" placeholder="Deal price.." #dealPrice/>
               </div>
               <div class="discuss-text">
                 <label for="amount">Deal amount (kg)</label>
-                <input type="text" id="deal-amount" name="deal-amount" placeholder="Deal amount.." />
+                <input type="text" id="deal-amount" name="deal-amount" placeholder="Deal amount.." #dealAmount/>
               </div>
-
-              <button id="btn-discuss">Discuss</button>
+              <button id="btn-discuss" (click)="discussOrder(o.id.toString(),dealPrice.value,dealAmount.value )">Discuss</button>
             </div>
           </mat-expansion-panel>
           <!--Decline-->
@@ -68,9 +67,9 @@
             <div class="collapse-content">
               <div class="decline-text">
                 <input type="text" id="decline-text" name="decline-text"
-                  placeholder="The reason why you reject this order.." />
+                  placeholder="The reason why you reject this order.." #reason/>
               </div>
-              <button id="btn-decline">Decline</button>
+              <button id="btn-decline" (click)="deleteOrder(o.id.toString(), reason.value)">Decline</button>
             </div>
           </mat-expansion-panel>
         </mat-accordion>

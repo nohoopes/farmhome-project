@@ -14,8 +14,6 @@ export class AgricuturalProductComponent implements OnInit {
 
   baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
 
-  imageUrl: string = '../../../assets/fruit_example.png';
-
   size: any;
 
   products: Product[] = [];
@@ -27,6 +25,10 @@ export class AgricuturalProductComponent implements OnInit {
   loading: boolean = false;
 
   panelOpenState = false;
+
+  imageUrl: string = '';
+
+  selectedFile!: File;
 
   constructor(
     private http: HttpClient,
@@ -50,6 +52,16 @@ export class AgricuturalProductComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     this.dialog.open(AddProductDialogComponent, dialogConfig);
+  }
+
+  
+  onFileSelected(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = () => {
+      this.imageUrl = reader.result as string;
+    };
   }
 
   deleteProduct(id: string) {

@@ -21,12 +21,12 @@
       font-weight: 700;
     }
 
-    #add-product-btn {
+    .add-product-btn {
       border: none;
       background: #2d473f;
       color: #fef4e3;
       font-weight: 500;
-      width: 250px;
+      width: 160px;
       height: 40px;
       border-radius: 10px;
       float: right;
@@ -52,14 +52,10 @@
     border-radius: 0 0 20px 20px;
     overflow-y: auto;
 
-    mat-expansion-panel-header-title {
-      color: #000000;
-    }
-
     mat-expansion-panel {
       background: #f3eee4;
       position: relative;
-      width: 610px;
+      width: 580px;
       margin-left: 30px;
       color: #000000;
       border-radius: 0px;
@@ -78,11 +74,20 @@
 
       #delete-product-btn {
         background: #d03e3e;
-        margin-top: 6px;
 
         &:hover {
           transform: scale(1.05);
           background: #b33535;
+        }
+      }
+
+      #update-product-btn {
+        margin-top: 15px;
+        background: #255258;
+
+        &:hover {
+          transform: scale(1.05);
+          background: #18363a;
         }
       }
     }
@@ -95,7 +100,7 @@
         flex-direction: column;
         background: #f3eee4;
         position: relative;
-        width: 610px;
+        width: 580px;
         height: 220px;
         margin-left: 30px;
         border-radius: 15px 15px 0 0;
@@ -120,7 +125,7 @@
             background: #e7d8b8;
             text-align: right;
             padding: 10px;
-            width: 140px;
+            width: 160px;
 
             h5 {
               font-size: 11pt !important;
