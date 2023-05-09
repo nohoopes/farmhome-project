@@ -93,7 +93,6 @@ export class AddProductDialogComponent implements OnInit {
             this.loading = false;
             alert('Add new agricultural product successfully. Please press Refresh button to reload latest updates!');
             this.dialog.closeAll();
-            this.router.navigate(['/product']);
           },
           error: (error: any) => {
             console.log(error);

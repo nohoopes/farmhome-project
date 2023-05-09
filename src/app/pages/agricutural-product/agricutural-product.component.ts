@@ -12,7 +12,6 @@ import { Product } from 'src/app/models/products';
   styleUrls: ['../../scss/index.scss'],
 })
 export class AgricuturalProductComponent implements OnInit {
-
   baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
 
   size: any;
@@ -52,7 +51,11 @@ export class AgricuturalProductComponent implements OnInit {
   openAddProductDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    this.dialog.open(AddProductDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AddProductDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+    });
   }
 
   onFileSelected(event: any) {
@@ -72,10 +75,16 @@ export class AgricuturalProductComponent implements OnInit {
     return [year, month, day].join('-');
   }
 
-  updateProduct(id:string, weight:string, name:string, season:string, description:string) {
+  updateProduct(
+    id: string,
+    weight: string,
+    name: string,
+    season: string,
+    description: string
+  ) {
     this.loading = true;
     var formData: any = new FormData();
-    if(this.imageUrl !='') {
+    if (this.imageUrl != '') {
       formData.append('images', this.selectedFile, this.selectedFile.name);
     }
     formData.append(
