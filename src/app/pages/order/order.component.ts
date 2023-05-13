@@ -18,8 +18,6 @@ export class OrderComponent implements OnInit {
 
   orders: Order[] = [];
 
-  sg_prices: number[] = [];
-
   today: Date = new Date();
 
   loading: boolean = false;

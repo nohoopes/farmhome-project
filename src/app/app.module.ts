@@ -39,6 +39,7 @@ import { AgricuturalProductComponent } from './pages/agricutural-product/agricut
 import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
 import { OrderComponent } from './pages/order/order.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { HomeComponent } from './pages/home/home.component';
     SuggestPriceComponent,
     OrderComponent,
     HomeComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -91,7 +91,7 @@ export class AddProductDialogComponent implements OnInit {
           next: (response: any) => {
             console.log(response);
             this.loading = false;
-            alert('Add new agricultural product successfully. Please press Refresh button to reload latest updates!');
+            alert('Add new agricultural product successfully. Please waiting for getting latest updates!');
             this.dialog.closeAll();
           },
           error: (error: any) => {

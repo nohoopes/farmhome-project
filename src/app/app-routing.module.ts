@@ -7,6 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.component';
 import { OrderComponent } from './pages/order/order.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'product', component: AgricuturalProductComponent },
   { path: 'price', component: SuggestPriceComponent },
   { path: 'order', component: OrderComponent },
+  { path: 'history', component: HistoryComponent },
 ];
 
 

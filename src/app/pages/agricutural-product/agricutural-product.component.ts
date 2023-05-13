@@ -126,7 +126,6 @@ export class AgricuturalProductComponent implements OnInit {
       this.loading = true;
       this.http.delete(this.baseApiUrl + '/fruit/delete/' + id).subscribe({
         next: (response) => {
-          this.router.navigate(['agricultural']);
           alert('Delete successfully! 😀');
           this.loading = false;
           this.ngOnInit();

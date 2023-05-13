@@ -42,84 +42,84 @@
           </div>
         </div>
         <mat-accordion>
-           <!--Update-->
-           <mat-expansion-panel hideToggle (opened)="panelOpenState = true" 
-           (closed)="panelOpenState = false">
-           <mat-expansion-panel-header>
-             <mat-panel-title style="color: rgb(10, 41, 14)">
-               Click to Update
-             </mat-panel-title>
-           </mat-expansion-panel-header>
-           <div class="collapse-p-content">
-             <div class="add-product-container__col1">
-               <img *ngIf="imageUrl" [src]="imageUrl" />
-               <input (change)="onFileSelected($event)" type="file" id="myUPImg" name="myUPImg" />
-               <label for="myUPImg" class="custom-file-upload">Change Image</label>
-             </div>
-             <div class="add-product-container__col2">
-               <div class="input-product-info">
-                 <label class="add-p-label" for="add-p-name">Product name</label>
-                 <input type="text" id="update-p-name" name="add-p-name" placeholder="Product name.." [value]="p.name"
-                   required #pname/>
-               </div>
-               <div class="add-product-container__col2__row2">
-                 <div class="input-product-info">
-                   <label class="add-p-label" for="add-p-weight">Weight</label>
-                   <input type="text" id="update-p-weight" name="add-p-weight" placeholder="Weight.."
-                     [value]="p.remainingWeight" required #weight/>
-                 </div>
-                 <div class="input-product-info">
-                   <label class="add-p-label" for="update-p-season" >Season</label>
-                   <select required #season>
-                     <option value="0">Select season:</option>
-                     <option value="Spring">Spring</option>
-                     <option value="Summer">Summer</option>
-                     <option value="Autumn">Autumn</option>
-                     <option value="Winter">Winter</option>
-                   </select>
-                 </div>
-               </div>
-               <div class="add-product-container__col2__row2">
-                 <div class="input-product-info">
-                   <label class="add-p-label" for="update-p-date">Date</label>
-                   <p style="color: #000 !important">
-                     {{ today | date : "dd-MM-yyyy" }}
-                   </p>
-                 </div>
-                 <div class="input-product-info">
-                   <label class="add-p-label" for="update-p-category">Category</label>
-                   <select>
-                     <option value="1">Fruit</option>
-                     <option value="2">Vegetable</option>
-                     <option value="3">Flower</option>
-                   </select>
-                 </div>
-               </div>
-               <div class="input-product-info" style="margin-top: -13px !important">
-                 <label class="add-p-label" for="update-p-description" >Description</label>
-                 <textarea [value]="p.description" required #description></textarea>
-               </div>
-               <div mat-dialog-actions class="add-product-container__col2__row2"
-                 style="margin-top: -8px; padding: 0 !important; float: right">
-                 <button id="update-product-btn" (click)="updateProduct(p.id.toString(), weight.value, pname.value, season.value,description.value)">Update</button>
-               </div>
-             </div>
-           </div>
-         </mat-expansion-panel>
+          <!--Update-->
+          <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header class="p-panel-header">
+              <mat-panel-title style="color: rgb(10, 41, 14)">
+                Click to Update
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="collapse-p-content" style="margin-top: 10px">
+              <div class="add-product-container__col1">
+                <img *ngIf="imageUrl" [src]="imageUrl" />
+                <input (change)="onFileSelected($event)" type="file" id="myUPImg" name="myUPImg" />
+                <label for="myUPImg" class="custom-file-upload">Change Image</label>
+              </div>
+              <div class="add-product-container__col2">
+                <div class="input-product-info">
+                  <label class="add-p-label" for="add-p-name">Product name</label>
+                  <input type="text" id="update-p-name" name="add-p-name" placeholder="Product name.." [value]="p.name"
+                    required #pname />
+                </div>
+                <div class="add-product-container__col2__row2">
+                  <div class="input-product-info">
+                    <label class="add-p-label" for="add-p-weight">Weight</label>
+                    <input type="text" id="update-p-weight" name="add-p-weight" placeholder="Weight.."
+                      [value]="p.remainingWeight" required #weight />
+                  </div>
+                  <div class="input-product-info">
+                    <label class="add-p-label" for="update-p-season">Season</label>
+                    <select required #season>
+                      <option value="0">Select season:</option>
+                      <option value="Spring">Spring</option>
+                      <option value="Summer">Summer</option>
+                      <option value="Autumn">Autumn</option>
+                      <option value="Winter">Winter</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="add-product-container__col2__row2">
+                  <div class="input-product-info">
+                    <label class="add-p-label" for="update-p-date">Date</label>
+                    <p style="color: #000 !important">
+                      {{ today | date : "dd-MM-yyyy" }}
+                    </p>
+                  </div>
+                  <div class="input-product-info">
+                    <label class="add-p-label" for="update-p-category">Category</label>
+                    <select>
+                      <option value="1">Fruit</option>
+                      <option value="2">Vegetable</option>
+                      <option value="3">Flower</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="input-product-info" style="margin-top: -13px !important">
+                  <label class="add-p-label" for="update-p-description">Description</label>
+                  <textarea [value]="p.description" required #description></textarea>
+                </div>
+                <div mat-dialog-actions class="add-product-container__col2__row2"
+                  style="margin-top: -8px; padding: 0 !important; float: right">
+                  <button id="update-product-btn"
+                    (click)="updateProduct(p.id.toString(), weight.value, pname.value, season.value,description.value)">Update</button>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
           <!--Delete-->
-          <mat-expansion-panel hideToggle style="border-radius: 0 0 10px 10px">
-            <mat-expansion-panel-header>
+          <mat-expansion-panel hideToggle style="border-radius: 0 0 10px 10px; ">
+            <mat-expansion-panel-header class="p-panel-header">
               <mat-panel-title style="color: rgb(192, 0, 0); ">
                 Click to Delete
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="collapse-p-content" style="display: flex; justify-content: space-between">
+            <div class="collapse-p-content" style="display: flex; justify-content: space-between; margin-top: 10px">
               <p>Are you sure to delete this product?</p>
               <button id="delete-product-btn" (click)="deleteProduct(p.id.toString())">
                 Delete
               </button>
             </div>
-          </mat-expansion-panel>     
+          </mat-expansion-panel>
         </mat-accordion>
       </div>
     </ng-container>
