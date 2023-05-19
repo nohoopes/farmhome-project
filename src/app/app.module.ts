@@ -40,6 +40,7 @@ import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.compo
 import { OrderComponent } from './pages/order/order.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { PlacesTestComponent } from './components/places-test/places-test.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { HistoryComponent } from './pages/history/history.component';
     OrderComponent,
     HomeComponent,
     HistoryComponent,
+    PlacesTestComponent,
   ],
   imports: [
     BrowserModule,

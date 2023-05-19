@@ -1,0 +1,20 @@
+<label for="province">Tỉnh:</label>
+<select id="province" [(ngModel)]="selectedProvince" (ngModelChange)="onProvinceChange()">
+    <option *ngFor="let province of provinces" [value]="province.province_code">
+        {{ province.province }}
+    </option>
+</select>
+
+<label for="district">Huyện:</label>
+<select id="district" [(ngModel)]="selectedDistrict" (ngModelChange)="onDistrictChange()">
+    <option *ngFor="let district of districts" [value]="district.district_code">
+        {{ district.district }}
+    </option>
+</select>
+
+<label for="ward">Xã:</label>
+<select id="ward" [(ngModel)]="selectedWard">
+    <option *ngFor="let ward of wards" [value]="ward.ward_code">
+        {{ ward.ward }}
+    </option>
+</select>
