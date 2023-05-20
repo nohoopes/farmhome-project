@@ -1,0 +1,29 @@
+.profile-container {
+    width: 1340px;
+    height: 600px;
+    background: #000000;
+    border-radius: 20px;
+    position: relative;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .profile-setting {
+       width: 1340px;
+       height: 552px;
+       background: #e6e8e4;
+       border-radius: 0 0 20px 20px;
+    }
+
+
+    .account-setting {
+        width: 1340px;
+        height: 552px;
+        background: #e6e8e4; 
+        border-radius: 0 0 20px 20px; 
+    }
+
+}

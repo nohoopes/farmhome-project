@@ -28,6 +28,9 @@
                 <li>
                   Remaining:<b> {{ p.remainingWeight }}{{ p.unit }}</b>
                 </li>
+                <li>
+                  Category: {{translateCategory(p.category)}}
+                </li>
                 <li>Season: {{ p.season }}</li>
                 <li>Date: {{ p.date | date : "dd/MM/yyyy" }}</li>
                 <li style="width: 140%">Description: {{ p.description }}</li>
@@ -87,10 +90,13 @@
                   </div>
                   <div class="input-product-info">
                     <label class="add-p-label" for="update-p-category">Category</label>
-                    <select>
-                      <option value="1">Fruit</option>
-                      <option value="2">Vegetable</option>
-                      <option value="3">Flower</option>
+                    <select required #category>
+                      <option value="0">Select category:</option>
+                      <option value="Trái cây">Fruits</option>
+                      <option value="2">Vegetables</option>
+                      <option value="3">Tubers</option>
+                      <option value="4">Beans</option>
+                      <option value="5">Spices</option>
                     </select>
                   </div>
                 </div>
@@ -101,7 +107,7 @@
                 <div mat-dialog-actions class="add-product-container__col2__row2"
                   style="margin-top: -8px; padding: 0 !important; float: right">
                   <button id="update-product-btn"
-                    (click)="updateProduct(p.id.toString(), weight.value, pname.value, season.value,description.value)">Update</button>
+                    (click)="updateProduct(p.id.toString(), weight.value, pname.value, season.value, description.value, category.value)">Update</button>
                 </div>
               </div>
             </div>

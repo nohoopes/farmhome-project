@@ -75,12 +75,22 @@ export class AgricuturalProductComponent implements OnInit {
     return [year, month, day].join('-');
   }
 
+  translateCategory(category:string) {
+    var cate : string = '';
+    if(category=="Trái cây") {
+      cate = 'Fruit';
+    }
+
+    return cate;
+  }
+
   updateProduct(
     id: string,
     weight: string,
     name: string,
     season: string,
-    description: string
+    description: string,
+    category: string,
   ) {
     this.loading = true;
     var formData: any = new FormData();
@@ -98,6 +108,7 @@ export class AgricuturalProductComponent implements OnInit {
         season: season,
         description: description,
         popular: true,
+        category: category,
       })
     );
     console.log(formData);

@@ -4,7 +4,7 @@ import { places } from 'src/app/models/places';
 @Component({
   selector: 'app-places-test',
   templateUrl: './places-test.component.html',
-  styleUrls: ['./places-test.component.scss'],
+  styleUrls: ['../../scss/index.scss'],
 })
 export class PlacesTestComponent implements OnInit {
   places = places;

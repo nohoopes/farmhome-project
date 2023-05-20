@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { MatListModule } from '@angular/material/list';
 import {} from '@angular/material/form-field';
@@ -41,6 +42,7 @@ import { OrderComponent } from './pages/order/order.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { PlacesTestComponent } from './components/places-test/places-test.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,7 @@ import { PlacesTestComponent } from './components/places-test/places-test.compon
     HomeComponent,
     HistoryComponent,
     PlacesTestComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +88,7 @@ import { PlacesTestComponent } from './components/places-test/places-test.compon
     MatExpansionModule,
     MatDialogModule,
     MatDatepickerModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

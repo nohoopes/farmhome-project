@@ -8,8 +8,4 @@ import * as $ from 'jquery';
 })
 export class HomeComponent {
 
-  ngAfterViewInit() {
-    $('.slick-carousel').click();
-  }
-
 }

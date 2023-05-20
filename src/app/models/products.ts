@@ -6,6 +6,7 @@ export class Product {
     unit: string = '';
     season: string = '';
     description: string = '';
+    category: string = '';
     date: string = '';
     suggestPrice: string = '';
     images!: Array<{ id: number; url: string; }>;

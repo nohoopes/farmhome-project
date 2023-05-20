@@ -8,6 +8,7 @@ import { SuggestPriceComponent } from './pages/suggest-price/suggest-price.compo
 import { OrderComponent } from './pages/order/order.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'price', component: SuggestPriceComponent },
   { path: 'order', component: OrderComponent },
   { path: 'history', component: HistoryComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 
