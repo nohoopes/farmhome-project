@@ -1,14 +1,96 @@
 <div class="profile-container">
-    <mat-tab-group dynamicHeight color="warn">
-        <mat-tab label="Profile" >
-          <div class="profile-setting">
-        
+  <mat-tab-group dynamicHeight color="warn">
+    <mat-tab label="Profile">
+      <div class="profile-setting">
+        <div class="profile-setting__header">
+          <div class="hidden-block"></div>
+          <h1>Profile Settings</h1>
+          <img class="profile-setting__header__logo" src="../../../assets/logo.png" />
+        </div>
+        <div class="profile-setting__body">
+          <div class="profile-info">
+            <img class="profile-info__avt" src="../../../assets/images/farmer1.jpg" />
+            <h3>Farmer 01</h3>
+            <h2>Nguyen Le Minh Nhut</h2>
+            <span style="
+                color: #009514;
+                font-weight: 500;
+                margin-top: -10px;
+                margin-bottom: 10px;
+              ">Active</span>
+            <div class="profile-info__contact">
+              <h3><b>Phone:</b> 0377961577</h3>
+              <h3><b>Birthday:</b> 01-02-2001</h3>
+              <h3><b>Gmail:</b> nlmhut@gmail.com</h3>
+              <h3><b>Address:</b> Ấp Mỹ Tường</h3>
+              <h3>xã Mỹ Đức Tây, huyện Cái Bè, tỉnh Tiền Giang</h3>
+            </div>
           </div>
-        </mat-tab>
-        <mat-tab label="Account">
-          <div class="account-setting">
+          <div class="profile-update">
+            <div class="profile-update__section" style="display: flex; align-items: center">
+              <img style="width: 130px; height: 130px; border-radius: 10px" *ngIf="imageUrl" [src]="imageUrl" />
+              <input (change)="onFileSelected($event)" type="file" id="myPImg" name="myPImg" />
+              <label for="myPImg" class="custom-file-upload">Change avatar</label>
+            </div>
+            <div class="profile-update__section">
+              <div class="profile-update__section__1">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name.." />
+              </div>
+              <div class="profile-update__section__1">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your name.." />
+              </div>
+              <div class="profile-update__section__1">
+                <label for="bday">Date of Birth</label>
+                <input type="text" id="dob" name="dob" placeholder="Your birthday.." />
+              </div>
+            </div>
+            <div class="profile-update__section" style="margin-top: -40px">
+              <div class="profile-update__section__1">
+                <label for="location">Address</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your address." />
+              </div>
+              <div class="profile-update__section__1">
+                <label for="province">Province:</label>
+                <select id="province" [(ngModel)]="selectedProvince" (ngModelChange)="onProvinceChange()">
+                  <option *ngFor="let province of provinces" [value]="province.province_code">
+                    {{ province.province }}
+                  </option>
+                </select>
 
+                <label for="district">District:</label>
+                <select id="district" [(ngModel)]="selectedDistrict" (ngModelChange)="onDistrictChange()">
+                  <option *ngFor="let district of districts" [value]="district.district_code">
+                    {{ district.district }}
+                  </option>
+                </select>
+
+                <label for="ward">Ward:</label>
+                <select id="ward" [(ngModel)]="selectedWard">
+                  <option *ngFor="let ward of wards" [value]="ward.ward_code">
+                    {{ ward.ward }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="profile-update__section" style="margin-top: -20px">
+              <div class="profile-update__section__1">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email.." />
+              </div>
+              <div class="profile-update__section__1">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Your phone.." />
+              </div>
+              <button class="custom-file-upload" style="width: 100%; margin-top: 20px">Update</button>
+            </div>
           </div>
-        </mat-tab>
-      </mat-tab-group>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Account">
+      <div class="account-setting"></div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
