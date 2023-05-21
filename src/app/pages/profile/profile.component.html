@@ -9,8 +9,8 @@
         </div>
         <div class="profile-setting__body">
           <div class="profile-info">
-            <img class="profile-info__avt" src="{{ avatar }}" />
-            <h3>Farmer {{ id }}</h3>
+            <img *ngIf="!loading" class="profile-info__avt" src="{{ avatar }}" />
+            <h3 *ngIf="!loading">Farmer {{ id }}</h3>
             <h2>{{ firstName }} {{ lastName }}</h2>
             <span style="
                 color: #009514;
@@ -18,7 +18,7 @@
                 margin-top: -10px;
                 margin-bottom: 10px;
               ">{{ status }}</span>
-            <div class="profile-info__contact">
+            <div class="profile-info__contact" *ngIf="!loading">
               <h3><b>Phone:</b> {{ phone }}</h3>
               <h3><b>Birthday:</b> {{ birthDay }}</h3>
               <h3><b>Gmail:</b> {{ email }}</h3>
@@ -28,32 +28,33 @@
                 {{ province }}
               </h3>
             </div>
-            <mat-progress-bar color="warn" style="z-index: 1" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+            <img class="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading"
+              style="display: block; width: 200px; height: 200px; margin-left: auto; margin-top: 100px; margin-right: auto;" />
           </div>
           <div class="profile-update">
             <div class="profile-update__section" style="display: flex; align-items: center">
               <img style="width: 130px; height: 130px; border-radius: 10px" *ngIf="imageUrl" [src]="imageUrl" />
-              <input (change)="onFileSelected($event)" type="file" id="myPImg" name="myPImg" />
+              <input (change)="onFileSelected($event)" type="file" id="myAvtImg" name="myAvtImg" />
               <label for="myPImg" class="custom-file-upload">Change avatar</label>
             </div>
             <div class="profile-update__section">
               <div class="profile-update__section__1">
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name.." />
+                <input type="text" [value]="firstName" id="fname" name="firstname" placeholder="Your name.." />
               </div>
               <div class="profile-update__section__1">
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your name.." />
+                <input type="text" [value]="lastName" id="lname" name="lastname" placeholder="Your name.." />
               </div>
               <div class="profile-update__section__1">
                 <label for="bday">Date of Birth</label>
-                <input type="text" id="dob" name="dob" placeholder="Your birthday.." />
+                <input type="text" [value]="birthDay" id="dob" name="dob" placeholder="Your birthday.." />
               </div>
             </div>
-            <div class="profile-update__section" style="margin-top: -40px">
+            <div class="profile-update__section" style="margin-top: -30px">
               <div class="profile-update__section__1">
                 <label for="location">Address</label>
-                <input type="text" id="addres" name="address" placeholder="Your address.." />
+                <input type="text" [value]="address" id="addres" name="address" placeholder="Your address.." />
               </div>
               <div class="profile-update__section__1">
                 <label for="province">Province:</label>
@@ -78,14 +79,14 @@
                 </select>
               </div>
             </div>
-            <div class="profile-update__section" style="margin-top: -20px">
+            <div class="profile-update__section" style="margin-top: -30px">
               <div class="profile-update__section__1">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email.." />
+                <input type="email" [value]="email" id="email" name="email" placeholder="Your email.." />
               </div>
               <div class="profile-update__section__1">
                 <label for="phone">Phone</label>
-                <input type="text" id="phone" name="phone" placeholder="Your phone.." />
+                <input type="text" [value]="phone" id="phone" name="phone" placeholder="Your phone.." />
               </div>
               <button class="custom-file-upload" style="width: 100%; margin-top: 20px">
                 Update

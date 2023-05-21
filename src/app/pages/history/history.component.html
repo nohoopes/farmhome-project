@@ -1,5 +1,13 @@
 <div class="history-container">
-  <mat-progress-bar style="margin-top: -568px" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div class="history-head">
+    <p>{{ today | date : "dd/MM/yyyy" }}</p>
+    <div class="history-head-btn">
+      <button class="add-product-btn" id="refresh" style="width: 80px" (click)="refreshBtn()">
+        Refresh
+      </button>
+    </div>
+  </div>
+  <img class ="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading" style="display: block;  margin-left: auto;  margin-right: auto;" />
   <div class="history-cards">
     <ng-container *ngFor="let o of history; let i = index">
       <div class="history-card-full">

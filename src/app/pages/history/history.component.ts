@@ -12,6 +12,8 @@ export class HistoryComponent implements OnInit {
   //declare
   loading: boolean = false;
 
+  today: Date = new Date();
+
   history: History[] = [];
 
   baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
@@ -28,6 +30,11 @@ export class HistoryComponent implements OnInit {
         console.log(this.history);
         this.loading = false;
       });
+  }
+
+  refreshBtn() {
+    this.history = [];
+    this.ngOnInit();
   }
 
   totalPrice(a: number, b: number) {

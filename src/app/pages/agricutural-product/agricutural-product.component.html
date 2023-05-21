@@ -5,12 +5,13 @@
       <button class="add-product-btn" id="add-product-btn" (click)="openAddProductDialog()">
         + Add new product
       </button>
-      <button class="add-product-btn" id="refresh" style="width: 80px" (click)="ngOnInit()">
+      <button class="add-product-btn" id="refresh" style="width: 80px" (click)="refreshBtn()">
         Refresh
       </button>
     </div>
   </div>
-  <mat-progress-bar style="margin-top: 5px" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <!-- <mat-progress-bar style="margin-top: 5px" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar> -->
+  <img class ="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading" style="display: block;  margin-left: auto;  margin-right: auto;" />
   <div class="product-cards">
     <ng-container *ngFor="let p of products; let i = index">
       <!--Card-->
@@ -93,10 +94,10 @@
                     <select required #category>
                       <option value="0">Select category:</option>
                       <option value="Trái cây">Fruits</option>
-                      <option value="2">Vegetables</option>
-                      <option value="3">Tubers</option>
-                      <option value="4">Beans</option>
-                      <option value="5">Spices</option>
+                      <option value="Rau xanh">Vegetables</option>
+                      <option value="Rau củ">Tubers</option>
+                      <option value="Đậu">Beans</option>
+                      <option value="Gia vị">Spices</option>
                     </select>
                   </div>
                 </div>

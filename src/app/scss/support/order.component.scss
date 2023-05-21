@@ -10,17 +10,49 @@
   box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
+  .order-head {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    p {
+      margin-top: 15px;
+      margin-left: 15px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .add-product-btn {
+      border: none;
+      background: #2d473f;
+      color: #fef4e3;
+      font-weight: 500;
+      width: 160px;
+      height: 40px;
+      border-radius: 10px;
+      float: right;
+      margin-top: 15px;
+      margin-right: 15px;
+      transition-duration: 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+        background: #1f322c;
+        transition-duration: 0.5s;
+      }
+    }
+  }
 
   .order-cards {
     width: 100%;
-    height: 92%;
+    height: 500px;
+    position: absolute;
+    top: 60px;
     position: absolute;
     overflow-y: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-  
 
     mat-expansion-panel {
       width: 605px;
@@ -28,6 +60,12 @@
       background: #596e5b;
       border-radius: 0px;
       box-shadow: 4px 4px 4px rgba(16, 35, 14, 0.25);
+
+      .expand-head-order {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
       button {
         width: 110px;
@@ -184,8 +222,6 @@
           margin-left: 30px;
           display: flex;
           flex-direction: column;
-
-
         }
 
         .order-id {

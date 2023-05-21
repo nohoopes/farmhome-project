@@ -48,13 +48,19 @@ export class AgricuturalProductComponent implements OnInit {
       });
   }
 
+  refreshBtn() {
+    this.products = [];
+    this.ngOnInit();
+  }
+
+
   openAddProductDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogRef = this.dialog.open(AddProductDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.ngOnInit();
+      this.refreshBtn();
     });
   }
 

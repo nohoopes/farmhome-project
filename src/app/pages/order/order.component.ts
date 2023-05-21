@@ -41,25 +41,25 @@ export class OrderComponent implements OnInit {
       });
   }
 
+  refreshBtn() {
+    this.orders = [];
+    this.ngOnInit();
+  }
+
   acceptOrder(id: string) {
-    let confirmAction = confirm('Accept this order?');
-    if (confirmAction) {
-      this.loading = true;
-      this.http.post(this.baseApiUrl + '/order/accept/' + id, {}).subscribe({
-        next: (response) => {
-          this.router.navigate(['order']);
-          alert('Accept successfully!');
-          this.loading = false;
-          this.ngOnInit();
-        },
-        error: (orders) => {
-          console.log(orders);
-          alert('Something went wrong! Please try again later 😢');
-        },
-      });
-    } else {
-      alert('Action canceled');
-    }
+    this.loading = true;
+    this.http.post(this.baseApiUrl + '/order/accept/' + id, {}).subscribe({
+      next: (response) => {
+        this.router.navigate(['order']);
+        alert('Accept successfully!');
+        this.loading = false;
+        this.ngOnInit();
+      },
+      error: (orders) => {
+        console.log(orders);
+        alert('Something went wrong! Please try again later 😢');
+      },
+    });
   }
 
   deleteOrder(id: string, reason: string) {
@@ -91,15 +91,20 @@ export class OrderComponent implements OnInit {
   discussOrder(id: string, dealPrice: string, dealAmount: string) {
     this.loading = true;
     this.discussForm = new FormGroup({
-      id:  new FormControl (id) ,
-      dealPrice: new FormControl (dealPrice),
-      dealAmount: new FormControl (dealAmount),
-    })
- 
-    let confirmAction = confirm('Are you sure you are satisfied with what you want to change?');
+      id: new FormControl(id),
+      dealPrice: new FormControl(dealPrice),
+      dealAmount: new FormControl(dealAmount),
+    });
+
+    let confirmAction = confirm(
+      'Are you sure you are satisfied with what you want to change?'
+    );
     if (confirmAction) {
       this.http
-        .put(this.baseApiUrl + '/order/suggest/', this.discussForm.getRawValue())
+        .put(
+          this.baseApiUrl + '/order/suggest/',
+          this.discussForm.getRawValue()
+        )
         .pipe(
           tap({
             next: (response: any) => {
