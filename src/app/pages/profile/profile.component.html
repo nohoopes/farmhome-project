@@ -9,22 +9,26 @@
         </div>
         <div class="profile-setting__body">
           <div class="profile-info">
-            <img class="profile-info__avt" src="../../../assets/images/farmer1.jpg" />
-            <h3>Farmer 01</h3>
-            <h2>Nguyen Le Minh Nhut</h2>
+            <img class="profile-info__avt" src="{{ avatar }}" />
+            <h3>Farmer {{ id }}</h3>
+            <h2>{{ firstName }} {{ lastName }}</h2>
             <span style="
                 color: #009514;
                 font-weight: 500;
                 margin-top: -10px;
                 margin-bottom: 10px;
-              ">Active</span>
+              ">{{ status }}</span>
             <div class="profile-info__contact">
-              <h3><b>Phone:</b> 0377961577</h3>
-              <h3><b>Birthday:</b> 01-02-2001</h3>
-              <h3><b>Gmail:</b> nlmhut@gmail.com</h3>
-              <h3><b>Address:</b> Ấp Mỹ Tường</h3>
-              <h3>xã Mỹ Đức Tây, huyện Cái Bè, tỉnh Tiền Giang</h3>
+              <h3><b>Phone:</b> {{ phone }}</h3>
+              <h3><b>Birthday:</b> {{ birthDay }}</h3>
+              <h3><b>Gmail:</b> {{ email }}</h3>
+              <h3><b>Address:</b> {{ address }}</h3>
+              <h3>
+                {{ ward }}, {{ district }},
+                {{ province }}
+              </h3>
             </div>
+            <mat-progress-bar color="warn" style="z-index: 1" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
           </div>
           <div class="profile-update">
             <div class="profile-update__section" style="display: flex; align-items: center">
@@ -49,7 +53,7 @@
             <div class="profile-update__section" style="margin-top: -40px">
               <div class="profile-update__section__1">
                 <label for="location">Address</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your address." />
+                <input type="text" id="addres" name="address" placeholder="Your address.." />
               </div>
               <div class="profile-update__section__1">
                 <label for="province">Province:</label>
@@ -83,7 +87,9 @@
                 <label for="phone">Phone</label>
                 <input type="text" id="phone" name="phone" placeholder="Your phone.." />
               </div>
-              <button class="custom-file-upload" style="width: 100%; margin-top: 20px">Update</button>
+              <button class="custom-file-upload" style="width: 100%; margin-top: 20px">
+                Update
+              </button>
             </div>
           </div>
         </div>
