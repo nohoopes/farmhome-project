@@ -67,6 +67,7 @@ export class ProfileComponent implements OnInit {
       this.birthDay = res.birthDay;
       this.avatar = res.avatar;
       this.status = res.status.name;
+      this.username = res.username;
       this.address = res.location.address;
       this.ward = res.location.ward.name;
       this.district = res.location.ward.district.name;

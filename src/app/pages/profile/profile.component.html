@@ -1,5 +1,6 @@
 <div class="profile-container">
   <mat-tab-group dynamicHeight color="warn">
+    <!--Profile-->
     <mat-tab label="Profile">
       <div class="profile-setting">
         <div class="profile-setting__header">
@@ -28,13 +29,19 @@
                 {{ province }}
               </h3>
             </div>
-            <img class="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading"
-              style="display: block; width: 200px; height: 200px; margin-left: auto; margin-top: 100px; margin-right: auto;" />
+            <img class="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading" style="
+                display: block;
+                width: 200px;
+                height: 200px;
+                margin-left: auto;
+                margin-top: 100px;
+                margin-right: auto;
+              " />
           </div>
           <div class="profile-update">
             <div class="profile-update__section" style="display: flex; align-items: center">
               <img style="width: 130px; height: 130px; border-radius: 10px" *ngIf="imageUrl" [src]="imageUrl" />
-              <input (change)="onFileSelected($event)" type="file" id="myAvtImg" name="myAvtImg" />
+              <input (change)="onFileSelected($event)" type="file" id="myPImg" name="myPImg" />
               <label for="myPImg" class="custom-file-upload">Change avatar</label>
             </div>
             <div class="profile-update__section">
@@ -96,8 +103,47 @@
         </div>
       </div>
     </mat-tab>
+    <!--Account-->
     <mat-tab label="Account">
-      <div class="account-setting"></div>
+      <div class="account-setting">
+        <div class="profile-setting" style="background: url('../../../assets/images/wave.svg'); background-repeat: no-repeat; background-position: center bottom">
+          <div class="profile-setting__header">
+            <div class="hidden-block"></div>
+            <h1>Account Settings</h1>
+            <img class="profile-setting__header__logo" src="../../../assets/logo.png" />
+          </div>
+          <div class="profile-setting__body">
+            <div class="profile-update" style="
+                display: flex;
+                flex-direction: column;
+                width: 500px;
+                height: 300px;
+                margin-left: auto;
+                margin-right: auto;
+              ">
+              <div class="profile-update__section">
+                <div class="profile-update__section__1">
+                  <label for="uname">User Name</label>
+                  <input type="text" [value]="username" id="uname" name="uname" placeholder="Your name.." readonly />
+                </div>
+                <div class="profile-update__section__1">
+                  <label for="pass">Password</label>
+                  <input type="password" id="pass" name="pass" placeholder="Your password.." />
+                </div>
+                <div class="profile-update__section__1">
+                  <label for="newpass">New Password</label>
+                  <input type="password" id="newpass" name="newpass" placeholder="Your new password.." />
+                </div>
+              </div>
+              <div class="profile-update__section">
+                <button class="custom-file-upload" style="width: 100%; margin-top: 20px">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

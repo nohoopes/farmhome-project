@@ -53,7 +53,7 @@ export class OrderComponent implements OnInit {
         this.router.navigate(['order']);
         alert('Accept successfully!');
         this.loading = false;
-        this.ngOnInit();
+        this.refreshBtn();
       },
       error: (orders) => {
         console.log(orders);
@@ -76,7 +76,7 @@ export class OrderComponent implements OnInit {
             this.router.navigate(['order']);
             alert('Decline successfully!');
             this.loading = false;
-            this.ngOnInit();
+            this.refreshBtn();
           },
           error: (orders) => {
             console.log(orders);
@@ -113,7 +113,7 @@ export class OrderComponent implements OnInit {
               alert(
                 'The new discussion is successful. Please wait for the merchant!'
               );
-              this.ngOnInit();
+              this.refreshBtn();
             },
             error: (error: any) => {
               console.log(error);

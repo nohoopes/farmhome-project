@@ -145,7 +145,7 @@ export class AgricuturalProductComponent implements OnInit {
         next: (response) => {
           alert('Delete successfully! 😀');
           this.loading = false;
-          this.ngOnInit();
+          this.refreshBtn();
         },
         error: (products) => {
           console.log(products);
