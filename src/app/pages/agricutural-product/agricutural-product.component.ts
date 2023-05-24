@@ -24,6 +24,8 @@ export class AgricuturalProductComponent implements OnInit {
 
   loading: boolean = false;
 
+  loading2: boolean = false;
+
   panelOpenState = false;
 
   imageUrl: string = '';
@@ -53,7 +55,6 @@ export class AgricuturalProductComponent implements OnInit {
     this.ngOnInit();
   }
 
-
   openAddProductDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -81,10 +82,24 @@ export class AgricuturalProductComponent implements OnInit {
     return [year, month, day].join('-');
   }
 
-  translateCategory(category:string) {
-    var cate : string = '';
-    if(category=="Trái cây") {
+  translateCategory(category: string) {
+    var cate: string = '';
+    if (category == 'Trái cây') {
       cate = 'Fruit';
+    }
+    if (category == 'Rau xanh') {
+      cate = 'Vegetables';
+    }
+    if (category == 'Rau củ') {
+      cate = 'Tubers';
+    }
+
+    if (category == 'Đậu') {
+      cate = 'Beans';
+    }
+
+    if (category == 'Gia vị') {
+      cate = 'Spices';
     }
 
     return cate;
@@ -96,9 +111,8 @@ export class AgricuturalProductComponent implements OnInit {
     name: string,
     season: string,
     description: string,
-    category: string,
+    category: string
   ) {
-    this.loading = true;
     var formData: any = new FormData();
     if (this.imageUrl != '') {
       formData.append('images', this.selectedFile, this.selectedFile.name);
@@ -118,15 +132,16 @@ export class AgricuturalProductComponent implements OnInit {
       })
     );
     console.log(formData);
+    this.loading2 = true;
     this.http
       .put(this.baseApiUrl + '/admin/fruit/update', formData)
       .pipe(
         tap({
           next: (response: any) => {
             console.log(response);
-            this.loading = false;
             alert('Update the agricultural product successfully!');
-            this.ngOnInit();
+            this.refreshBtn();
+            this.loading2 = false;
           },
           error: (error: any) => {
             console.log(error);
@@ -140,17 +155,17 @@ export class AgricuturalProductComponent implements OnInit {
   deleteProduct(id: string) {
     let confirmAction = confirm('Are you sure to delete this?');
     if (confirmAction) {
-      this.loading = true;
+      this.loading2 = true;
       this.http.delete(this.baseApiUrl + '/fruit/delete/' + id).subscribe({
         next: (response) => {
           alert('Delete successfully! 😀');
-          this.loading = false;
+          this.loading2 = false;
           this.refreshBtn();
         },
         error: (products) => {
           console.log(products);
           alert('Something went wrong! Please try again later 😢');
-          this.loading = false;
+          this.loading2 = false;
         },
       });
     } else {

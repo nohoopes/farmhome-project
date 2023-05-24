@@ -57,7 +57,7 @@
     mat-expansion-panel {
       width: 605px;
       margin-left: 30px;
-      background: #596e5b;
+      background: #2d473f;
       border-radius: 0px;
       box-shadow: 4px 4px 4px rgba(16, 35, 14, 0.25);
 
@@ -79,11 +79,12 @@
       }
 
       #btn-accept {
-        background: #2d473f;
+        background:  #596e5b;
 
         &:hover {
           transform: scale(1.05);
-          background: #20322d;
+          background:  #3f5141;
+          box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35);
         }
       }
 
@@ -93,7 +94,8 @@
 
         &:hover {
           transform: scale(1.05);
-          background: #18363a;
+          background: #1e4348;
+          box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
         }
       }
 
@@ -104,6 +106,7 @@
         &:hover {
           transform: scale(1.05);
           background: #b33535;
+          box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
         }
       }
 
@@ -151,7 +154,7 @@
         margin-top: 20px;
         width: 605px;
         height: 250px;
-        background: #596e5b;
+        background: #2d473f;
         border-radius: 10px 10px 0 0;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
