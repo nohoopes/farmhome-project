@@ -36,7 +36,7 @@ export class AgricuturalProductComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -93,15 +93,12 @@ export class AgricuturalProductComponent implements OnInit {
     if (category == 'Rau củ') {
       cate = 'Tubers';
     }
-
     if (category == 'Đậu') {
       cate = 'Beans';
     }
-
     if (category == 'Gia vị') {
       cate = 'Spices';
     }
-
     return cate;
   }
 

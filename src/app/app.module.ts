@@ -17,6 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { MatListModule } from '@angular/material/list';
 import {} from '@angular/material/form-field';
@@ -89,6 +90,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatDialogModule,
     MatDatepickerModule,
     MatTabsModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

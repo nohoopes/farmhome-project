@@ -73,7 +73,7 @@
                   </div>
                   <div class="input-product-info">
                     <label class="add-p-label" for="update-p-season">Season</label>
-                    <select required #season>
+                    <select [value] = "p.season" required #season>
                       <option value="0">Select season:</option>
                       <option value="Spring">Spring</option>
                       <option value="Summer">Summer</option>
@@ -91,7 +91,7 @@
                   </div>
                   <div class="input-product-info">
                     <label class="add-p-label" for="update-p-category">Category</label>
-                    <select required #category>
+                    <select [value] = "p.category" required #category>
                       <option value="0">Select category:</option>
                       <option value="Trái cây">Fruits</option>
                       <option value="Rau xanh">Vegetables</option>

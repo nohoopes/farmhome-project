@@ -7,4 +7,8 @@ export class Order {
     price?:number =0;
     transport?:boolean = true;
     date?:string = "";
+    status?:any;
+    dealAmount?:any;
+    dealPrice?:any;
+    declineReason?:any;
   }

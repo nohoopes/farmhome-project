@@ -22,6 +22,8 @@ export class OrderComponent implements OnInit {
 
   loading: boolean = false;
 
+  loading2: boolean = false;
+
   panelOpenState = false;
 
   discussForm: FormGroup | undefined;
@@ -47,12 +49,11 @@ export class OrderComponent implements OnInit {
   }
 
   acceptOrder(id: string) {
-    this.loading = true;
+    this.loading2 = true;
     this.http.post(this.baseApiUrl + '/order/accept/' + id, {}).subscribe({
       next: (response) => {
-        this.router.navigate(['order']);
         alert('Accept successfully!');
-        this.loading = false;
+        this.loading2 = false;
         this.refreshBtn();
       },
       error: (orders) => {
@@ -65,7 +66,7 @@ export class OrderComponent implements OnInit {
   deleteOrder(id: string, reason: string) {
     let confirmAction = confirm('Are you sure to decline this order?');
     if (confirmAction) {
-      this.loading = true;
+      this.loading2 = true;
       this.http
         .delete(
           this.baseApiUrl + '/order/cancel/' + id + '?reason=' + reason,
@@ -75,7 +76,7 @@ export class OrderComponent implements OnInit {
           next: (response) => {
             this.router.navigate(['order']);
             alert('Decline successfully!');
-            this.loading = false;
+            this.loading2 = false;
             this.refreshBtn();
           },
           error: (orders) => {
@@ -89,7 +90,7 @@ export class OrderComponent implements OnInit {
   }
 
   discussOrder(id: string, dealPrice: string, dealAmount: string) {
-    this.loading = true;
+    this.loading2 = true;
     this.discussForm = new FormGroup({
       id: new FormControl(id),
       dealPrice: new FormControl(dealPrice),
@@ -109,7 +110,7 @@ export class OrderComponent implements OnInit {
           tap({
             next: (response: any) => {
               console.log(response);
-              this.loading = false;
+              this.loading2 = false;
               alert(
                 'The new discussion is successful. Please wait for the merchant!'
               );
