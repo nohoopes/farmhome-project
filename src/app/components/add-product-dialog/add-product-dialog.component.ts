@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class AddProductDialogComponent implements OnInit {
   //declare
 
-  baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
+  baseApiUrl: string = 'https://farmhomebackend-production.up.railway.app';
 
   today: Date = new Date();
 

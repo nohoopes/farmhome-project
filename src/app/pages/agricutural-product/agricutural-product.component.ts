@@ -12,7 +12,7 @@ import { Product } from 'src/app/models/products';
   styleUrls: ['../../scss/index.scss'],
 })
 export class AgricuturalProductComponent implements OnInit {
-  baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
+  baseApiUrl: string = 'https://farmhomebackend-production.up.railway.app';
 
   size: any;
 

@@ -12,7 +12,7 @@ import { Order } from 'src/app/models/orders';
 })
 export class OrderComponent implements OnInit {
   //Declare
-  baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
+  baseApiUrl: string = 'https://farmhomebackend-production.up.railway.app';
 
   size: any;
 

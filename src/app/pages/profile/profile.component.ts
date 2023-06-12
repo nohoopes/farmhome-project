@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
 
   selectedFile!: File;
 
-  baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
+  baseApiUrl: string = 'https://farmhomebackend-production.up.railway.app';
 
   user = User;
 

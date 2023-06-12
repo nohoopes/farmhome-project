@@ -16,7 +16,7 @@ export class HistoryComponent implements OnInit {
 
   history: History[] = [];
 
-  baseApiUrl: string = 'https://backendfarmhome-production.up.railway.app';
+  baseApiUrl: string = 'https://farmhomebackend-production.up.railway.app';
 
   //Function
   constructor(private http: HttpClient, private router: Router) {}
