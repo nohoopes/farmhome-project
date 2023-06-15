@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Farm Home</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
-<app-header>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Farm Home</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<app-header *ngIf="!(_router.url === '/login')">
 </app-header>
 <div class="page-container">
-  <app-sidebar></app-sidebar>
+  <app-sidebar *ngIf="!(_router.url === '/login')"></app-sidebar>
   <router-outlet></router-outlet>
 </div>
+
 </html>
