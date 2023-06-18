@@ -52,6 +52,7 @@ export class AgricuturalProductComponent implements OnInit {
 
   refreshBtn() {
     this.products = [];
+    this.imageUrl = '';
     this.ngOnInit();
   }
 
