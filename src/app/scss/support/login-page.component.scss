@@ -1,24 +1,12 @@
-.login-container {
-   
+.register-stepper {
+  width: inherit;
+  border-radius: 10px;
+  background: #2d473f;
 
-    /* Full height */
-    height: 1000px;
-    width: 100%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-  .login-form {
-    position: absolute;
-    width: 587px;
-    height: 688px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 25px;
+  .register-btn {
+    &:hover {
+      background: #e0cba5 !important;
+    }
   }
+
 }

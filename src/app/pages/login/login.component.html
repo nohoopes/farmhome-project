@@ -1,5 +1,10 @@
-<div class="profile-container"
-    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0">
+<div class="profile-container" style="
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  ">
     <mat-tab-group dynamicHeight color="accent">
         <!--Login-->
         <mat-tab label="Login">
@@ -11,7 +16,7 @@
           ">
                     <div class="profile-setting__header">
                         <div class="hidden-block"></div>
-                        <h1>Login</h1>
+                        <h1 style="padding: 20px">Login</h1>
                         <img class="profile-setting__header__logo" src="../../../assets/logo.png" />
                     </div>
                     <div class="profile-setting__body">
@@ -57,9 +62,142 @@
                         <h1>Register</h1>
                         <img class="profile-setting__header__logo" src="../../../assets/logo.png" />
                     </div>
-                    <div class="profile-setting__body" style="justify-content: center;">
-                        <div class="profile-update" style="align-self: center; grid-template-columns: 1fr 1fr 1fr; width: 1100px;">
-                            
+                    <div class="profile-setting__body" style="justify-content: center">
+                        <div class="profile-update" style="
+                align-self: center;
+                grid-template-columns: 1fr 1fr 1fr;
+                width: 1100px;
+              ">
+                            <mat-stepper class="register-stepper" orientation="vertical" [linear]="true" #stepper
+                                color="accent">
+                                <mat-step>
+                                    <ng-template class="register-stepper-title" matStepLabel>Upload your
+                                        avatar</ng-template>
+                                    <div class="profile-update__section" style="display: flex; align-items: center">
+                                        <img style="
+                        width: 120px;
+                        height: 120px;
+                        border: 1px solid #fff;
+                        border-radius: 50%;
+                        background: #f2ede3;
+                    
+                      " *ngIf="imageUrl" [src]="imageUrl" />
+                                        <input (change)="onFileSelected($event)" type="file" id="myPImg"
+                                            name="myPImg" />
+                                        <label style="border: 1px solid #fff; background: #f2ede3; color: #000"
+                                            for="myPImg" class="custom-file-upload register-btn">Upload
+                                            avatar</label>
+                                    </div>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Fill your account</ng-template>
+                                    <div class="profile-update__section" style="
+                      display: grid;
+                      grid-template-columns: 1fr 1fr 1fr;
+                      width: 95%;
+                      color: #f3eee4;
+                    ">
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="fname">Username*</label>
+                                            <input type="text" [value]="username" id="fname" name="username"
+                                                placeholder="User name.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="lname">Password*</label>
+                                            <input type="password" [value]="password" id="lname" name="password"
+                                                placeholder="Password.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="lname">Confirm Password*</label>
+                                            <input type="password" [value]="password" id="lname" name="confirmPassword"
+                                                placeholder="Confirm password.." required />
+                                        </div>
+                                    </div>
+                                </mat-step>
+                                <mat-step><ng-template matStepLabel>Fill your address</ng-template>
+                                    <div class="profile-update__section" style="
+                      display: grid;
+                      grid-template-columns: 1fr 1fr;
+                      width: 95%;
+                      color: #f3eee4;
+                    ">
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="location">Address*</label>
+                                            <input type="text" [value]="address" id="addres" name="address"
+                                                placeholder="Your address.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="province">Province*</label>
+                                            <select id="province" [(ngModel)]="selectedProvince"
+                                                (ngModelChange)="onProvinceChange()">
+                                                <option *ngFor="let province of provinces"
+                                                    [value]="province.province_code">
+                                                    {{ province.province }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="district">District*</label>
+                                            <select id="district" [(ngModel)]="selectedDistrict"
+                                                (ngModelChange)="onDistrictChange()">
+                                                <option *ngFor="let district of districts"
+                                                    [value]="district.district_code">
+                                                    {{ district.district }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="ward">Ward*</label>
+                                            <select id="ward" [(ngModel)]="selectedWard">
+                                                <option *ngFor="let ward of wards" [value]="ward.ward_code">
+                                                    {{ ward.ward }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </mat-step>
+                                <mat-step><ng-template matStepLabel>Fill your information</ng-template>
+                                    <div class="profile-update__section" style="
+                      display: grid;
+                      grid-template-columns: 1fr 1fr 1fr;
+                      width: 95%;
+                      color: #f3eee4;
+                    ">
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="fname">First Name*</label>
+                                            <input type="text" [value]="firstName" id="fname" name="firstname"
+                                                placeholder="Your name.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="lname">Last Name*</label>
+                                            <input type="text" [value]="lastName" id="lname" name="lastname"
+                                                placeholder="Your name.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="bday">Date of Birth*</label>
+                                            <input type="text" [value]="birthDay" id="dob" name="dob"
+                                                placeholder="yyyy-mm-dd" required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="email">Email*</label>
+                                            <input type="email" [value]="email" id="email" name="email"
+                                                placeholder="Your email.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="phone">Phone*</label>
+                                            <input type="text" [value]="phone" id="phone" name="phone"
+                                                placeholder="Your phone.." required />
+                                        </div>
+                                        <div class="profile-update__section__1"
+                                            style="margin: 8px; display: flex; justify-content: center; align-items: center;">
+                                            <button class="custom-file-upload register-btn"
+                                                style="width: 80%; border: 1px solid #fff; background: #f2ede3; color: #000">
+                                                Sign up
+                                            </button>
+                                        </div>
+                                    </div>
+                                </mat-step>
+                            </mat-stepper>
                         </div>
                     </div>
                 </div>
