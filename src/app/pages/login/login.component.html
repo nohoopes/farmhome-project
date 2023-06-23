@@ -31,16 +31,16 @@
                             <div class="profile-update__section">
                                 <div class="profile-update__section__1">
                                     <label for="uname">User Name</label>
-                                    <input type="text" [value]="username" id="uname" name="uname"
-                                        placeholder="Your user name.." readonly />
+                                    <input type="text" id="uname" name="uname"
+                                        placeholder="Your username.." #username_login/>
                                 </div>
                                 <div class="profile-update__section__1">
                                     <label for="pass">Password</label>
-                                    <input type="password" id="pass" name="pass" placeholder="Your password.." />
+                                    <input type="password" id="pass" name="pass" placeholder="Your password.." #password_login/>
                                 </div>
                             </div>
                             <div class="profile-update__section">
-                                <button class="custom-file-upload" style="width: 100%; margin-top: 20px">
+                                <button class="custom-file-upload" style="width: 100%; margin-top: 20px" (click)="loginFarmhome(username_login.value, password_login.value)">
                                     Sign in
                                 </button>
                             </div>
@@ -68,7 +68,7 @@
                 grid-template-columns: 1fr 1fr 1fr;
                 width: 1100px;
               ">
-                            <mat-stepper class="register-stepper" orientation="vertical" [linear]="true" #stepper
+                            <mat-stepper class="register-stepper" orientation="vertical" [linear]="false" #stepper
                                 color="accent">
                                 <mat-step>
                                     <ng-template class="register-stepper-title" matStepLabel>Upload your
@@ -86,7 +86,7 @@
                                             name="myPImg" />
                                         <label style="border: 1px solid #fff; background: #f2ede3; color: #000"
                                             for="myPImg" class="custom-file-upload register-btn">Upload
-                                            avatar</label>
+                                        </label>
                                     </div>
                                 </mat-step>
                                 <mat-step>

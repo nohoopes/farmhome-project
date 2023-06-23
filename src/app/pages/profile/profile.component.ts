@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
     }));
 
     this.loading = true;
-    this.http.get(this.baseApiUrl + '/user/id/' + 2).subscribe((res: any) => {
+    this.http.get(this.baseApiUrl + '/user/id/' + localStorage.getItem('userId')).subscribe((res: any) => {
       this.user = res;
       this.id = res.id;
       this.firstName = res.firstName;

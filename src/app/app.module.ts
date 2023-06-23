@@ -17,7 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { MatListModule } from '@angular/material/list';
 import {} from '@angular/material/form-field';
@@ -44,6 +44,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { PlacesTestComponent } from './components/places-test/places-test.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TokenInterceptor } from './interceptor/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatTabsModule,
     MatStepperModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

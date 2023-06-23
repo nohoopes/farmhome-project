@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { places } from 'src/app/models/places';
 import { User } from 'src/app/models/user';
 
@@ -44,7 +48,11 @@ export class LoginComponent implements OnInit {
   avatar: string = '';
   status: any = '';
 
+  loginForm: FormGroup | undefined;
+
   //function
+  constructor(private http: HttpClient, private router: Router) {}
+
   ngOnInit(): void {
     this.provinces = this.places.map((place) => ({
       province: place.province,
@@ -75,5 +83,36 @@ export class LoginComponent implements OnInit {
     reader.onload = () => {
       this.imageUrl = reader.result as string;
     };
+  }
+
+  loginFarmhome(username: string, password: string) {
+    this.loginForm = new FormGroup({
+      username: new FormControl(username),
+      password: new FormControl(password),
+    });
+    this.http
+      .post(this.baseApiUrl + '/signin', this.loginForm.getRawValue())
+      .pipe(
+        tap({
+          next: (response: any) => {
+            console.log(response);
+            alert(
+              'Login successfully'
+            );
+            const accessToken = response.accessToken;
+            const userId = response.idUser;
+        
+            // Lưu AccessToken và UserID vào Local Storage
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('userId', userId);
+            this.router.navigate(['/product']);
+          },
+          error: (error: any) => {
+            console.log(error);
+            alert(error.message);
+          },
+        })
+      )
+      .subscribe();
   }
 }

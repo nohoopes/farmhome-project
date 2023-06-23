@@ -41,7 +41,7 @@ export class AgricuturalProductComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.http
-      .get(this.baseApiUrl + '/fruit/farmer/' + 2 + '?no=0&limit=100')
+      .get(this.baseApiUrl + '/fruit/farmer/' + localStorage.getItem('userId') + '?no=0&limit=100')
       .subscribe((res: any) => {
         this.products = res.contents;
         this.size = res.contents.length;

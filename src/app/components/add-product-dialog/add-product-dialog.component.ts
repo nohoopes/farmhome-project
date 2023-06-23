@@ -78,7 +78,7 @@ export class AddProductDialogComponent implements OnInit {
         date: this.formatDate(),
         season: this.season,
         farmer: {
-          id: 2,
+          id: localStorage.getItem('userId'),
         },
         description: this.description,
       })
@@ -91,12 +91,11 @@ export class AddProductDialogComponent implements OnInit {
           next: (response: any) => {
             console.log(response);
             this.loading = false;
-            alert('Add new agricultural product successfully. Please waiting for getting latest updates!');
             this.dialog.closeAll();
           },
           error: (error: any) => {
             console.log(error);
-            alert('Something went wrong! Please try again later 😢');
+            alert(error.message);
           },
         })
       )

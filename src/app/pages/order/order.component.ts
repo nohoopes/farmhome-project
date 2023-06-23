@@ -34,7 +34,7 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.http
-      .get(this.baseApiUrl + '/order/farmer/' + 2)
+      .get(this.baseApiUrl + '/order/farmer/' + localStorage.getItem('userId'))
       .subscribe((res: any) => {
         this.orders = res.contents;
         this.size = res.contents.length;

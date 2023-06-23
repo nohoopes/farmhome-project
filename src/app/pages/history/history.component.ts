@@ -24,7 +24,7 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.http
-      .get(this.baseApiUrl + '/history/user/' + 2)
+      .get(this.baseApiUrl + '/history/user/' + localStorage.getItem('userId'))
       .subscribe((res: any) => {
         this.history = res.contents;
         console.log(this.history);
