@@ -101,10 +101,12 @@ export class LoginComponent implements OnInit {
             );
             const accessToken = response.accessToken;
             const userId = response.idUser;
+            const avatar = response.avatar;
         
             // Lưu AccessToken và UserID vào Local Storage
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userId', userId);
+            localStorage.setItem('avatar', avatar);
             this.router.navigate(['/product']);
           },
           error: (error: any) => {

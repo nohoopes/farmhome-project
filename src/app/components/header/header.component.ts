@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
+  avatar : any = localStorage.getItem('avatar')
+
   constructor(private http: HttpClient, private router: Router) {}
 
   logoutFarmhome () {

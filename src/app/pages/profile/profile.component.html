@@ -65,21 +65,21 @@
               </div>
               <div class="profile-update__section__1">
                 <label for="province">Province:</label>
-                <select id="province" [(ngModel)]="selectedProvince" (ngModelChange)="onProvinceChange()">
+                <select [value]="province" id="province" [(ngModel)]="selectedProvince" (ngModelChange)="onProvinceChange()">
                   <option *ngFor="let province of provinces" [value]="province.province_code">
                     {{ province.province }}
                   </option>
                 </select>
 
                 <label for="district">District:</label>
-                <select id="district" [(ngModel)]="selectedDistrict" (ngModelChange)="onDistrictChange()">
+                <select [value]="district" [(ngModel)]="selectedDistrict" (ngModelChange)="onDistrictChange()">
                   <option *ngFor="let district of districts" [value]="district.district_code">
                     {{ district.district }}
                   </option>
                 </select>
 
                 <label for="ward">Ward:</label>
-                <select id="ward" [(ngModel)]="selectedWard">
+                <select [value]="ward" [(ngModel)]="selectedWard">
                   <option *ngFor="let ward of wards" [value]="ward.ward_code">
                     {{ ward.ward }}
                   </option>

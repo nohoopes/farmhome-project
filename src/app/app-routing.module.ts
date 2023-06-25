@@ -11,8 +11,8 @@ import { HistoryComponent } from './pages/history/history.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, pathMatch: 'full' },
+{ path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'chatting', component: ChattingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
