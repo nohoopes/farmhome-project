@@ -31,19 +31,30 @@
                             <div class="profile-update__section">
                                 <div class="profile-update__section__1">
                                     <label for="uname">User Name</label>
-                                    <input type="text" id="uname" name="uname"
-                                        placeholder="Your username.." #username_login/>
+                                    <input type="text" id="uname" name="uname" placeholder="Your username.."
+                                        #username_login />
                                 </div>
                                 <div class="profile-update__section__1">
                                     <label for="pass">Password</label>
-                                    <input type="password" id="pass" name="pass" placeholder="Your password.." #password_login/>
+                                    <input type="password" id="pass" name="pass" placeholder="Your password.."
+                                        #password_login />
                                 </div>
                             </div>
                             <div class="profile-update__section">
-                                <button class="custom-file-upload" style="width: 100%; margin-top: 20px" (click)="loginFarmhome(username_login.value, password_login.value)">
+                                <button class="custom-file-upload" style="width: 100%; margin-top: 20px" (click)="
+                    loginFarmhome(username_login.value, password_login.value)
+                  ">
                                     Sign in
                                 </button>
                             </div>
+                            <img src="../../../assets/images/output-onlinegiftools.gif" *ngIf="loading" style="
+                  display: block;
+                  width: 160px;
+                  height: 160px;
+                  margin-top: 65px;
+                  margin-left: auto;
+                  margin-right: auto;
+                " />
                         </div>
                     </div>
                 </div>
@@ -68,29 +79,9 @@
                 grid-template-columns: 1fr 1fr 1fr;
                 width: 1100px;
               ">
-                            <mat-stepper class="register-stepper" orientation="vertical" [linear]="false" #stepper
+                            <mat-stepper class="register-stepper" orientation="vertical" [linear]="true" #stepper
                                 color="accent">
-                                <mat-step>
-                                    <ng-template class="register-stepper-title" matStepLabel>Upload your
-                                        avatar</ng-template>
-                                    <div class="profile-update__section" style="display: flex; align-items: center">
-                                        <img style="
-                        width: 120px;
-                        height: 120px;
-                        border: 1px solid #fff;
-                        border-radius: 50%;
-                        background: #f2ede3;
-                    
-                      " *ngIf="imageUrl" [src]="imageUrl" />
-                                        <input (change)="onFileSelected($event)" type="file" id="myPImg"
-                                            name="myPImg" />
-                                        <label style="border: 1px solid #fff; background: #f2ede3; color: #000"
-                                            for="myPImg" class="custom-file-upload register-btn">Upload
-                                        </label>
-                                    </div>
-                                </mat-step>
-                                <mat-step>
-                                    <ng-template matStepLabel>Fill your account</ng-template>
+                                <mat-step><ng-template matStepLabel>Fill your information</ng-template>
                                     <div class="profile-update__section" style="
                       display: grid;
                       grid-template-columns: 1fr 1fr 1fr;
@@ -98,19 +89,29 @@
                       color: #f3eee4;
                     ">
                                         <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="fname">Username*</label>
-                                            <input type="text" [value]="username" id="fname" name="username"
-                                                placeholder="User name.." required />
+                                            <label for="fname">First Name*</label>
+                                            <input type="text" [value]="firstName" id="fname" name="firstname"
+                                                placeholder="Your name.." required />
                                         </div>
                                         <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="lname">Password*</label>
-                                            <input type="password" [value]="password" id="lname" name="password"
-                                                placeholder="Password.." required />
+                                            <label for="lname">Last Name*</label>
+                                            <input type="text" [value]="lastName" id="lname" name="lastname"
+                                                placeholder="Your name.." required />
                                         </div>
                                         <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="lname">Confirm Password*</label>
-                                            <input type="password" [value]="password" id="lname" name="confirmPassword"
-                                                placeholder="Confirm password.." required />
+                                            <label for="bday">Date of Birth*</label>
+                                            <input type="text" [value]="birthDay" id="dob" name="dob"
+                                                placeholder="yyyy-mm-dd" required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="email">Email*</label>
+                                            <input type="email" [value]="email" id="email" name="email"
+                                                placeholder="Your email.." required />
+                                        </div>
+                                        <div class="profile-update__section__1" style="margin: 8px">
+                                            <label for="phone">Phone*</label>
+                                            <input type="text" [value]="phone" id="phone" name="phone"
+                                                placeholder="Your phone.." required />
                                         </div>
                                     </div>
                                 </mat-step>
@@ -156,7 +157,9 @@
                                         </div>
                                     </div>
                                 </mat-step>
-                                <mat-step><ng-template matStepLabel>Fill your information</ng-template>
+
+                                <mat-step>
+                                    <ng-template matStepLabel>Fill your account</ng-template>
                                     <div class="profile-update__section" style="
                       display: grid;
                       grid-template-columns: 1fr 1fr 1fr;
@@ -164,34 +167,58 @@
                       color: #f3eee4;
                     ">
                                         <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="fname">First Name*</label>
-                                            <input type="text" [value]="firstName" id="fname" name="firstname"
-                                                placeholder="Your name.." required />
+                                            <label for="fname">Username*</label>
+                                            <input type="text" [value]="username" id="fname" name="username"
+                                                placeholder="User name.." required />
                                         </div>
                                         <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="lname">Last Name*</label>
-                                            <input type="text" [value]="lastName" id="lname" name="lastname"
-                                                placeholder="Your name.." required />
+                                            <label for="lname">Password*</label>
+                                            <input type="password" [value]="password" id="lname" name="password"
+                                                placeholder="Password.." required />
                                         </div>
                                         <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="bday">Date of Birth*</label>
-                                            <input type="text" [value]="birthDay" id="dob" name="dob"
-                                                placeholder="yyyy-mm-dd" required />
+                                            <label for="lname">Confirm Password*</label>
+                                            <input type="password" [value]="password" id="lname" name="confirmPassword"
+                                                placeholder="Confirm password.." required />
                                         </div>
-                                        <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="email">Email*</label>
-                                            <input type="email" [value]="email" id="email" name="email"
-                                                placeholder="Your email.." required />
-                                        </div>
-                                        <div class="profile-update__section__1" style="margin: 8px">
-                                            <label for="phone">Phone*</label>
-                                            <input type="text" [value]="phone" id="phone" name="phone"
-                                                placeholder="Your phone.." required />
-                                        </div>
-                                        <div class="profile-update__section__1"
-                                            style="margin: 8px; display: flex; justify-content: center; align-items: center;">
-                                            <button class="custom-file-upload register-btn"
-                                                style="width: 80%; border: 1px solid #fff; background: #f2ede3; color: #000">
+                                    </div>
+                                </mat-step>
+
+                                <mat-step>
+                                    <ng-template class="register-stepper-title" matStepLabel>Upload your
+                                        avatar</ng-template>
+                                    <div class="profile-update__section" style="display: flex; align-items: center">
+                                        <img style="
+                        width: 80px;
+                        height: 80px;
+                        border: 1px solid #fff;
+                        border-radius: 50%;
+                        background: #f2ede3;
+                      " *ngIf="imageUrl" [src]="imageUrl" />
+                                        <input (change)="onFileSelected($event)" type="file" id="myPImg"
+                                            name="myPImg" />
+                                        <label style="
+                        border: 1px solid #fff;
+                        width: 100px;
+                        background: #f2ede3;
+                        color: #000;
+                      " for="myPImg" class="custom-file-upload register-btn">Upload
+                                        </label>
+                                        <div class="profile-update__section__1" style="
+                        margin: 8px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      ">
+                                            <button class="custom-file-upload register-btn" style="
+                          width: 180%;
+                          margin-top: 25px;
+                          border: 1px solid #fff;
+                          background: #f2ede3;
+                          color: #000;
+                          float: right;
+                          font-size: 13pt;
+                        ">
                                                 Sign up
                                             </button>
                                         </div>

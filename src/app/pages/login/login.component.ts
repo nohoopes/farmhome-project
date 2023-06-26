@@ -86,6 +86,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginFarmhome(username: string, password: string) {
+    this.loading = true;
     this.loginForm = new FormGroup({
       username: new FormControl(username),
       password: new FormControl(password),
@@ -107,7 +108,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userId', userId);
             localStorage.setItem('avatar', avatar);
-            this.router.navigate(['/product']);
+            this.loading = false;
+            this.router.navigate(['/home']);
           },
           error: (error: any) => {
             console.log(error);
