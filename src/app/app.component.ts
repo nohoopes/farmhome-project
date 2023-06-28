@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,10 +10,18 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Farmhome';
 
-  constructor(public  _router: Router) { }
+  constructor(public  _router: Router, private http: HttpClient, private router: Router) { }
   sideBarOpen = true;
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('accessToken') === null) {
+      this.router.navigate(['/login']);
+      
+    }
+  }
+ 
 }

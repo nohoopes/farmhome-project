@@ -33,6 +33,10 @@ export class AddProductDialogComponent implements OnInit {
   description: any;
   season: any;
 
+  p_product: any;
+  p_confidence: any;
+  p_season: any = 'Select season:';
+
   //function
 
   ngOnInit(): void {
@@ -102,6 +106,37 @@ export class AddProductDialogComponent implements OnInit {
       .subscribe();
   }
 
+  predictForm() {
+    var formData: any = new FormData();
+    formData.append('image', this.selectedFile, this.selectedFile.name);
+    console.log(formData);
+    this.http
+      .post(
+        'https://fruit-vegetable-detect-production.up.railway.app/detect',
+        formData
+      )
+      .pipe(
+        tap({
+          next: (response: any) => {
+            this.p_product = `${response[0].fruit}`;
+            this.p_season = this.getSeason(this.p_product);
+            this.p_product = this.changeName2VNese(this.p_product);
+            this.p_confidence = `${response[0].confidence}`;
+            this.p_confidence = this.p_confidence * 100;
+            console.log(this.p_product);
+            console.log(this.p_confidence);
+          },
+          error: (error) => {
+            console.log(error);
+            alert(
+              'Something went wrong! Please check the input or try again later 😢'
+            );
+          },
+        })
+      )
+      .subscribe();
+  }
+
   //get event
   changeName(e: any) {
     this.name = e;
@@ -114,5 +149,212 @@ export class AddProductDialogComponent implements OnInit {
   }
   changeDescription(e: any) {
     this.description = e;
+  }
+
+  changeName2VNese(name: any) {
+    var name2VNese: string = '';
+    //0
+    if (name == 'apple') {
+      name2VNese = 'Táo';
+    }
+    //1
+    if (name == 'banana') {
+      name2VNese = 'Chuối';
+    }
+    //2
+    if (name == 'beetroot') {
+      name2VNese = 'Củ dền';
+    }
+    //3
+    if (name == 'bell pepper') {
+      name2VNese = 'Ớt chuông';
+    }
+    //4
+    if (name == 'cabbage') {
+      name2VNese = 'Bắp cải';
+    }
+    //5
+    if (name == 'capsicum') {
+      name2VNese = 'Ớt chuông';
+    }
+    //6
+    if (name == 'carrot') {
+      name2VNese = 'Củ cải đỏ';
+    }
+    //7
+    if (name == 'cauliflower') {
+      name2VNese = 'Bông cải';
+    }
+    //8
+    if (name == 'chilli pepper') {
+      name2VNese = 'Ớt';
+    }
+    //9
+    if (name == 'corn') {
+      name2VNese = 'Bắp';
+    }
+    //10
+    if (name == 'cucumber') {
+      name2VNese = 'Dưa chuột';
+    }
+    //11
+    if (name == 'eggplant') {
+      name2VNese = 'Cà tím';
+    }
+    //12
+    if (name == 'garlic') {
+      name2VNese = 'Tỏi';
+    }
+    //13
+    if (name == 'ginger') {
+      name2VNese = 'Gừng';
+    }
+    //14
+    if (name == 'grapes') {
+      name2VNese = 'Nho';
+    }
+    //15
+    if (name == 'jalepeno') {
+      name2VNese = 'Ớt Jalepeno';
+    }
+    //16
+    if (name == 'kiwi') {
+      name2VNese = 'Kiwi';
+    }
+    //17
+    if (name == 'lemon') {
+      name2VNese = 'Chanh';
+    }
+    //18
+    if (name == 'lettuce') {
+      name2VNese = 'Rau xà lách';
+    }
+    //19
+    if (name == 'mango') {
+      name2VNese = 'Xoài';
+    }
+    //20
+    if (name == 'onion') {
+      name2VNese = 'Củ hành';
+    }
+    //21
+    if (name == 'orange') {
+      name2VNese = 'Cam';
+    }
+    //22
+    if (name == 'paprika') {
+      name2VNese = 'Ớt cựa gà';
+    }
+    //23
+    if (name == 'pear') {
+      name2VNese = 'Lê';
+    }
+    //24
+    if (name == 'peas') {
+      name2VNese = 'Đậu hà lan';
+    }
+    //25
+    if (name == 'pineapple') {
+      name2VNese = 'Dứa';
+    }
+    //26
+    if (name == 'pomegranate') {
+      name2VNese = 'Lựu';
+    }
+    //27
+    if (name == 'potato') {
+      name2VNese = 'Khoai tây';
+    }
+    //28
+    if (name == 'raddish') {
+      name2VNese = 'Củ cải';
+    }
+    //29
+    if (name == 'soy beans') {
+      name2VNese = 'Đậu nành';
+    }
+    //30
+    if (name == 'spinach') {
+      name2VNese = 'Rau chân vịt';
+    }
+    //31
+    if (name == 'sweetcorn') {
+      name2VNese = 'Bắp ngọt';
+    }
+    //32
+    if (name == 'sweetpotato') {
+      name2VNese = 'Khoai lang';
+    }
+    //33
+    if (name == 'tomato') {
+      name2VNese = 'Cà chua';
+    }
+    //34
+    if (name == 'turnip') {
+      name2VNese = 'Củ cải Turnip';
+    }
+    //35
+    if (name == 'watermelon') {
+      name2VNese = 'Dưa hấu';
+    }
+
+    return name2VNese;
+  }
+
+  getSeason(name: any) {
+    var ss: string = '';
+    if (
+      name == 'grapes' ||
+      name == 'pomegranate' ||
+      name == 'banana' ||
+      name == 'carrot' ||
+      name == 'garlic' ||
+      name == 'onion' ||
+      name == 'pineapple' ||
+      name == 'orange' ||
+      name == 'capsicum'
+    ) {
+      ss = 'Spring';
+    }
+    if (
+      name == 'jalepeno' ||
+      name == 'paprika' ||
+      name == 'watermelon' ||
+      name == 'raddish' ||
+      name == 'lettuce' ||
+      name == 'spinach' ||
+      name == 'tomato' ||
+      name == 'sweetpotato' ||
+      name == 'cauliflower'
+    ) {
+      ss = 'Summer';
+    }
+    if (
+      name == 'bell pepper' ||
+      name == 'peas' ||
+      name == 'lemon' ||
+      name == 'kiwi' ||
+      name == 'chilli pepper' ||
+      name == 'cabbage' ||
+      name == 'turnip' ||
+      name == 'eggplant' ||
+      name == 'potato'
+    ) {
+      ss = 'Autumn';
+    }
+    if (
+      name == 'soy beans' ||
+      name == 'pear' ||
+      name == 'mango' ||
+      name == 'beetroot' ||
+      name == 'sweetcorn' ||
+      name == 'cucumber' ||
+      name == 'corn' ||
+      name == 'apple' ||
+      name == 'ginger'
+    ) {
+      ss = 'Winter';
+    }
+    return ss;
   }
 }

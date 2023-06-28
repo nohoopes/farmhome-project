@@ -4,15 +4,15 @@
         <input (change)="onFileSelected($event)" type="file" id="myPImg" name="myPImg" />
         <label for="myPImg" class="custom-file-upload">Choose File</label>
         <div class="predict-area">
-            <h4 id="predict-text"></h4>
-            <h4 id="predict-text"></h4>
+            <h4 id="predict-text">{{p_product}}</h4>
+            <h4 id="predict-text">{{p_confidence | number:'1.2-2'}}%</h4>
         </div>
-        <button id="predict-btn">Predict</button>
+        <button id="predict-btn" (click)="predictForm()">Predict</button>
     </div>
     <div class="add-product-container__col2">
         <div class="input-product-info">
             <label class="add-p-label" for="add-p-name">Product name</label>
-            <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." required
+            <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." required value="{{p_product}}"
                 (input)="changeName($any($event.target).value)" />
         </div>
         <div class="add-product-container__col2__row2">
@@ -23,8 +23,8 @@
             </div>
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-season">Season</label>
-                <select required (change)="changeSeason($any($event.target).value)">
-                    <option value="0">Select season:</option>
+                <select required (change)="changeSeason($any($event.target).value)" value = {{p_season}}>
+                    <!-- <option value="0">Select season:</option> -->
                     <option value="Spring">Spring</option>
                     <option value="Summer">Summer</option>
                     <option value="Autumn">Autumn</option>

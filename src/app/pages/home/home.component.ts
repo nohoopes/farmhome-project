@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -7,5 +9,6 @@ import * as $ from 'jquery';
   styleUrls: ['../../scss/index.scss'],
 })
 export class HomeComponent {
+
 
 }

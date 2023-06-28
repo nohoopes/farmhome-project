@@ -97,9 +97,6 @@ export class LoginComponent implements OnInit {
         tap({
           next: (response: any) => {
             console.log(response);
-            alert(
-              'Login successfully'
-            );
             const accessToken = response.accessToken;
             const userId = response.idUser;
             const avatar = response.avatar;

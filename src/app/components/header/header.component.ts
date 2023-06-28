@@ -16,6 +16,7 @@ export class HeaderComponent {
   logoutFarmhome () {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('avatar')
     this.router.navigate(['/login']);
   }
 
