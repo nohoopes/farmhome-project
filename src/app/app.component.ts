@@ -22,6 +22,9 @@ export class AppComponent {
       this.router.navigate(['/login']);
       
     }
+    else {
+      this.router.navigate(['/home']);
+    }
   }
  
 }
