@@ -1,6 +1,8 @@
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { places } from 'src/app/models/places';
 import { User } from 'src/app/models/user';
 
@@ -21,6 +23,8 @@ export class ProfileComponent implements OnInit {
   user = User;
 
   loading: boolean = false;
+
+  formattedDate: string ='';
 
   places = places;
   provinces!: any[];
@@ -99,5 +103,59 @@ export class ProfileComponent implements OnInit {
     reader.onload = () => {
       this.imageUrl = reader.result as string;
     };
+  }
+
+  formatDate(): void {
+    const date = new Date(this.formattedDate);
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    this.formattedDate = `${year}/${month}/${day}`;
+  }
+
+  updateUser(fname: string, lname: string, bdate: string, email: string, phone: string, address: string, ward: string) {
+    this.loading = true;
+    var formData: any = new FormData();
+    if (this.imageUrl != '') {
+      formData.append('avatar', this.selectedFile, this.selectedFile.name);
+    }
+    formData.append(
+      'user',
+      JSON.stringify({
+          id: localStorage.getItem('userId'),
+          firstName: fname,
+          lastName: lname,
+          birthDay: bdate,
+          email: email,
+          phone: phone,
+          status: {
+              id: 1
+          },
+          location: {
+              address: address,
+              ward: { 
+                  id: ward,
+              }
+          }
+      
+      })
+    );
+    this.http
+      .put(this.baseApiUrl + '/admin/user/update', formData)
+      .pipe(
+        tap({
+          next: (response: any) => {
+            console.log(response);
+            this.imageUrl = '../../../assets/fruit_example.png';
+            alert("Update successfully");
+            this.ngOnInit();
+          },
+          error: (error: any) => {
+            console.log(error);
+            alert(error.message);
+          },
+        })
+      )
+      .subscribe();
   }
 }
