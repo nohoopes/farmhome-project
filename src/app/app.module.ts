@@ -94,7 +94,7 @@ import { TokenInterceptor } from './interceptor/token-interceptor';
     MatStepperModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    
   ],
   bootstrap: [AppComponent],
 })

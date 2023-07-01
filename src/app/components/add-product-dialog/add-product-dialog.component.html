@@ -12,18 +12,18 @@
     <div class="add-product-container__col2">
         <div class="input-product-info">
             <label class="add-p-label" for="add-p-name">Product name</label>
-            <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." required value="{{p_product}}"
-                (input)="changeName($any($event.target).value)" />
+            <input type="text" id="add-p-name" name="add-p-name" placeholder="Product name.." required value="{{p_product}}" #a_name
+                 />
         </div>
         <div class="add-product-container__col2__row2">
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-weight">Weight</label>
-                <input type="text" id="add-p-weight" name="add-p-weight" placeholder="Weight.." required
-                    (input)="changeWeight($any($event.target).value)" />
+                <input type="text" id="add-p-weight" name="add-p-weight" placeholder="Weight.." required #a_weight
+                     />
             </div>
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-season">Season</label>
-                <select required (change)="changeSeason($any($event.target).value)" value = {{p_season}}>
+                <select  value = {{p_season}} #a_season>
                     <!-- <option value="0">Select season:</option> -->
                     <option value="Spring">Spring</option>
                     <option value="Summer">Summer</option>
@@ -41,8 +41,8 @@
             </div>
             <div class="input-product-info">
                 <label class="add-p-label" for="add-p-category">Category</label>
-                <select>
-                    <option value="0">Select category:</option>
+                <select value = {{p_category}} required #a_category>
+                    <!-- <option value="0">Select category:</option> -->
                     <option value="Trái cây">Fruits</option>
                     <option value="Rau xanh">Vegetables</option>
                     <option value="Rau củ">Tubers</option>
@@ -53,11 +53,11 @@
         </div>
         <div class="input-product-info" style="margin-top: -13px !important">
             <label class="add-p-label" for="add-p-description">Description</label>
-            <textarea required (input)="changeDescription($any($event.target).value)"></textarea>
+            <textarea required #a_description></textarea>
         </div>
         <div mat-dialog-actions class="add-product-container__col2__row2"
             style="margin-top: -8px; padding: 0 !important">
-            <button id="add-p-btn" (click)="addProduct()">Add</button>
+            <button id="add-p-btn" (click)="addProduct(a_name.value, a_weight.value, a_description.value, a_season.value, a_category.value)">Add</button>
             <button mat-dialog-close id="cancel-p-btn">Cancel</button>
         </div>
     </div>

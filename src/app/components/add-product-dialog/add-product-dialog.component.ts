@@ -26,16 +26,13 @@ export class AddProductDialogComponent implements OnInit {
 
   form: FormGroup;
 
-  name: any;
-  weight: any;
-  unit: any;
-  date: any;
-  description: any;
   season: any;
+  category: any;
 
   p_product: any;
   p_confidence: any;
-  p_season: any = 'Select season:';
+  p_season: any;
+  p_category: any;
 
   //function
 
@@ -69,22 +66,29 @@ export class AddProductDialogComponent implements OnInit {
     };
   }
 
-  addProduct() {
+  addProduct(
+    name: any,
+    weight: any,
+    description: any,
+    season: any,
+    category: any
+  ) {
     this.loading = true;
     var formData: any = new FormData();
     formData.append('images', this.selectedFile, this.selectedFile.name);
     formData.append(
       'fruit',
       JSON.stringify({
-        name: this.name,
-        weight: this.weight,
+        name: name,
+        weight: weight,
         unit: 'kg',
         date: this.formatDate(),
-        season: this.season,
+        category: category,
+        season: season,
         farmer: {
           id: localStorage.getItem('userId'),
         },
-        description: this.description,
+        description: description,
       })
     );
     console.log(formData);
@@ -120,11 +124,13 @@ export class AddProductDialogComponent implements OnInit {
           next: (response: any) => {
             this.p_product = `${response[0].fruit}`;
             this.p_season = this.getSeason(this.p_product);
+            this.p_category = this.getCategory(this.p_product);
             this.p_product = this.changeName2VNese(this.p_product);
             this.p_confidence = `${response[0].confidence}`;
             this.p_confidence = this.p_confidence * 100;
             console.log(this.p_product);
-            console.log(this.p_confidence);
+            console.log(this.p_category);
+            console.log(this.p_season);
           },
           error: (error) => {
             console.log(error);
@@ -137,18 +143,11 @@ export class AddProductDialogComponent implements OnInit {
       .subscribe();
   }
 
-  //get event
-  changeName(e: any) {
-    this.name = e;
-  }
-  changeWeight(e: any) {
-    this.weight = e * 1;
-  }
   changeSeason(e: any) {
     this.season = e;
   }
-  changeDescription(e: any) {
-    this.description = e;
+  changeCategory(e: any) {
+    this.category = e;
   }
 
   changeName2VNese(name: any) {
@@ -356,5 +355,63 @@ export class AddProductDialogComponent implements OnInit {
       ss = 'Winter';
     }
     return ss;
+  }
+
+  getCategory(name: any) {
+    var ct: string = '';
+    if (
+      name == 'apple' ||
+      name == 'banana' ||
+      name == 'corn' ||
+      name == 'eggplant' ||
+      name == 'cucumber' ||
+      name == 'grapes' ||
+      name == 'kiwi' ||
+      name == 'lemon' ||
+      name == 'mango' ||
+      name == 'orange' ||
+      name == 'pear' ||
+      name == 'pineapple' ||
+      name == 'pomegranate' ||
+      name == 'sweetcorn' ||
+      name == 'tomato' ||
+      name == 'watermelon'
+    ) {
+      ct = 'Trái cây';
+    }
+    if (
+      name == 'cabbage' ||
+      name == 'cauliflower' ||
+      name == 'lettuce' ||
+      name == 'spinach'
+    ) {
+      ct = 'Rau xanh';
+    }
+    if (
+      name == 'beetroot' ||
+      name == 'carrot' ||
+      name == 'potato' ||
+      name == 'raddish' ||
+      name == 'sweetpotato' ||
+      name == 'turnip'
+    ) {
+      ct = 'Rau củ';
+    }
+    if (name == 'peas' || name == 'soy beans') {
+      ct = 'Đậu';
+    }
+    if (
+      name == 'garlic' ||
+      name == 'ginger' ||
+      name == 'bell pepper' ||
+      name == 'capsicum' ||
+      name == 'chilli pepper' ||
+      name == 'jalepeno' ||
+      name == 'onion' ||
+      name == 'paprika'
+    ) {
+      ct = 'Gia vị';
+    }
+    return ct;
   }
 }
