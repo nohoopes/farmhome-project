@@ -1,6 +1,6 @@
 <div class="product-container">
   <div class="product-head">
-    <p>{{ today | date : "dd/MM/yyyy" }}</p>
+    <p>{{ today | date : "MM/dd/yyyy" }}</p>
     <div class="product-head-btn">
       <button class="add-product-btn" id="add-product-btn" (click)="openAddProductDialog()">
         + Add new product
@@ -33,7 +33,7 @@
                   Category: {{translateCategory(p.category)}}
                 </li>
                 <li>Season: {{ p.season }}</li>
-                <li>Date: {{ p.date | date : "dd/MM/yyyy" }}</li>
+                <li>Date: {{ p.date | date : "MM/dd/yyyy" }}</li>
                 <li style="width: 140%">Description: {{ p.description }}</li>
               </ul>
             </div>

@@ -7,4 +7,5 @@ export class History {
     price:number =0;
     transport?:boolean = true;
     date?:string = "";
+    deliveryDate?:string = "";
   }

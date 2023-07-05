@@ -43,7 +43,7 @@ export class AgricuturalProductComponent implements OnInit {
     this.http
       .get(this.baseApiUrl + '/fruit/farmer/' + localStorage.getItem('userId') + '?no=0&limit=100')
       .subscribe((res: any) => {
-        this.products = res.contents;
+        this.products = res.contents.reverse();
         this.size = res.contents.length;
         console.log(this.products);
         this.loading = false;

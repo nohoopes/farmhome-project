@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { History } from 'src/app/models/history';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-history',
@@ -19,7 +20,10 @@ export class HistoryComponent implements OnInit {
   baseApiUrl: string = 'https://farmhomebackend-production.up.railway.app';
 
   //Function
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -38,8 +42,19 @@ export class HistoryComponent implements OnInit {
   }
 
   totalPrice(a: number, b: number) {
-    let c: Number;
+    let c;
     c = a * b * 1000;
+    c = this.formatNumber(c);
     return c;
+  }
+
+  formatNumber(numberToFormat: any) {
+    if (numberToFormat !== null) {
+      const decimalPipe = new DecimalPipe('en-US');
+      return decimalPipe.transform(numberToFormat, '1.0-0');
+    }
+    else {
+      return ''; 
+    }
   }
 }

@@ -1,16 +1,30 @@
 <div class="order-container">
   <div class="order-head">
-    <p>{{ today | date : "dd/MM/yyyy" }}</p>
+    <p>{{ today | date : "MM/dd/yyyy" }}</p>
     <div class="history-head-btn">
-      <button class="add-product-btn" id="refresh" style="width: 80px" (click)="refreshBtn()">
+      <button
+        class="add-product-btn"
+        id="refresh"
+        style="width: 80px"
+        (click)="refreshBtn()"
+      >
         Refresh
       </button>
     </div>
   </div>
-  <img class="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading"
-    style="display: block; margin-left: auto; margin-right: auto" />
-  <mat-tab-group color="accent" class="tab-group" style="background:#1F4136;" *ngIf="!loading" dynamicHeight>
-    <mat-progress-bar color="accent" *ngIf="loading2" mode="indeterminate"></mat-progress-bar>
+  <img
+    class="loading-fruit"
+    src="../../../assets/images/healthy-food-unscreen.gif"
+    *ngIf="loading"
+    style="display: block; margin-left: auto; margin-right: auto"
+  />
+  <mat-tab-group
+    color="accent"
+    class="tab-group"
+    style="background: #1f4136"
+    *ngIf="!loading"
+    dynamicHeight
+  >
     <!--Pending-->
     <mat-tab label="Pending">
       <div class="order-cards">
@@ -28,7 +42,7 @@
                     Price: <b> {{ o.price }}000vnd </b>
                   </li>
                   <li>Transport: {{ o.transport ? "Yes" : "No" }}</li>
-                  <li>Date: {{ o.date | date : "dd/MM/yyyy" }}</li>
+                  <li>Date: {{ o.date | date : "MM/dd/yyyy" }}</li>
                 </ul>
               </div>
               <div *ngIf="o.status.name === 'Dealing'" class="order-info">
@@ -41,7 +55,7 @@
                     Deal price: <b> {{ o.dealPrice }}000vnd </b>
                   </li>
                   <li>Transport: {{ o.transport ? "Yes" : "No" }}</li>
-                  <li>Date: {{ o.date | date : "dd/MM/yyyy" }}</li>
+                  <li>Date: {{ o.date | date : "MM/dd/yyyy" }}</li>
                 </ul>
               </div>
               <h2 class="order-id">#{{ o.id }}</h2>
@@ -49,7 +63,10 @@
                 <h2 style="color: #54d552" *ngIf="o.status.name === 'Pending'">
                   {{ o.status.name }}
                 </h2>
-                <h2>{{ o.merchant.firstName }} {{ o.merchant.lastName }} - {{ o.merchant.phone }}</h2>
+                <h2>
+                  {{ o.merchant.firstName }} {{ o.merchant.lastName }} -
+                  {{ o.merchant.phone }}
+                </h2>
                 <h3>
                   {{ o.merchant.location.address }},
                   {{ o.merchant.location.ward.name }},
@@ -68,14 +85,38 @@
                   <mat-panel-title> Click to Accept </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="collapse-content">
-                  <p>Are you sure you agree with this order?</p>
-                  <button id="btn-accept" (click)="acceptOrder(o.id.toString())">
+                  <p *ngIf="!o.transport">
+                    Are you sure you agree with this order?
+                  </p>
+                  <div
+                    *ngIf="o.transport"
+                    class="discuss-text"
+                    style="display: inline-block"
+                  >
+                    <label for="deal-price" style="margin-right: 20px"
+                      >Delivery day</label
+                    >
+                    <input
+                      type="date"
+                      id="delivery-day"
+                      name="delivery-day"
+                      placeholder=""
+                      [(ngModel)]="inputDate"
+                    />
+                  </div>
+                  <button
+                    id="btn-accept"
+                    (click)="acceptOrder(o.id.toString(), inputDate)"
+                  >
                     Accept
                   </button>
                 </div>
               </mat-expansion-panel>
               <!--Discuss-->
-              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+              >
                 <mat-expansion-panel-header class="expand-head-order">
                   <mat-panel-title style="color: rgb(215, 222, 159)">
                     Click to Discuss
@@ -84,26 +125,44 @@
                 <div class="collapse-content">
                   <div class="discuss-text">
                     <label for="deal-price">Deal Price (000VND)</label>
-                    <input type="text" id="deal-price" name="deal-price" placeholder="Deal price.." #dealPrice />
+                    <input
+                      type="text"
+                      id="deal-price"
+                      name="deal-price"
+                      placeholder="Deal price.."
+                      #dealPrice
+                    />
                   </div>
                   <div class="discuss-text">
                     <label for="amount">Deal amount (kg)</label>
-                    <input type="text" id="deal-amount" name="deal-amount" placeholder="Deal amount.." #dealAmount />
+                    <input
+                      type="text"
+                      id="deal-amount"
+                      name="deal-amount"
+                      placeholder="Deal amount.."
+                      #dealAmount
+                    />
                   </div>
-                  <button id="btn-discuss" (click)="
+                  <button
+                    id="btn-discuss"
+                    (click)="
                       discussOrder(
                         o.id.toString(),
                         dealPrice.value,
                         dealAmount.value
                       )
-                    ">
+                    "
+                  >
                     Discuss
                   </button>
                 </div>
               </mat-expansion-panel>
               <!--Decline-->
-              <mat-expansion-panel style="border-radius: 0 0 10px 10px" (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false">
+              <mat-expansion-panel
+                style="border-radius: 0 0 10px 10px"
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+              >
                 <mat-expansion-panel-header class="expand-head-order">
                   <mat-panel-title style="color: #efa1a1">
                     Click to Decline
@@ -111,10 +170,18 @@
                 </mat-expansion-panel-header>
                 <div class="collapse-content">
                   <div class="decline-text">
-                    <input type="text" id="decline-text" name="decline-text"
-                      placeholder="The reason why you reject this order.." #reason />
+                    <input
+                      type="text"
+                      id="decline-text"
+                      name="decline-text"
+                      placeholder="The reason why you reject this order.."
+                      #reason
+                    />
                   </div>
-                  <button id="btn-decline" (click)="deleteOrder(o.id.toString(), reason.value)">
+                  <button
+                    id="btn-decline"
+                    (click)="deleteOrder(o.id.toString(), reason.value)"
+                  >
                     Decline
                   </button>
                 </div>
@@ -141,7 +208,7 @@
                     Deal price: <b> {{ o.dealPrice }}000vnd </b>
                   </li>
                   <li>Transport: {{ o.transport ? "Yes" : "No" }}</li>
-                  <li>Date: {{ o.date | date : "dd/MM/yyyy" }}</li>
+                  <li>Date: {{ o.date | date : "MM/dd/yyyy" }}</li>
                 </ul>
               </div>
               <h2 class="order-id">#{{ o.id }}</h2>
@@ -149,7 +216,10 @@
                 <h2 style="color: #c7cb79" *ngIf="o.status.name === 'Dealing'">
                   {{ o.status.name }}
                 </h2>
-                <h2>{{ o.merchant.firstName }} {{ o.merchant.lastName }} - {{ o.merchant.phone }}</h2>
+                <h2>
+                  {{ o.merchant.firstName }} {{ o.merchant.lastName }} -
+                  {{ o.merchant.phone }}
+                </h2>
                 <h3>
                   {{ o.merchant.location.address }},
                   {{ o.merchant.location.ward.name }},
@@ -182,7 +252,7 @@
                     Price: <b> {{ o.price }}000vnd</b>
                   </li>
                   <li>Transport: {{ o.transport ? "Yes" : "No" }}</li>
-                  <li>Date: {{ o.date | date : "dd/MM/yyyy" }}</li>
+                  <li>Date: {{ o.date | date : "MM/dd/yyyy" }}</li>
                 </ul>
               </div>
               <h2 class="order-id">#{{ o.id }}</h2>
@@ -190,7 +260,10 @@
                 <h2 style="color: #efa1a1" *ngIf="o.status.name === 'Canceled'">
                   {{ o.status.name }} - {{ o.declineReason }}
                 </h2>
-                <h2>{{ o.merchant.firstName }} {{ o.merchant.lastName }} - {{ o.merchant.phone }}</h2>
+                <h2>
+                  {{ o.merchant.firstName }} {{ o.merchant.lastName }} -
+                  {{ o.merchant.phone }}
+                </h2>
                 <h3>
                   {{ o.merchant.location.address }},
                   {{ o.merchant.location.ward.name }},

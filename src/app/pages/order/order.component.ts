@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -20,6 +21,10 @@ export class OrderComponent implements OnInit {
 
   today: Date = new Date();
 
+  inputDate: string = '';
+
+  convertedDate: string = '';
+
   loading: boolean = false;
 
   loading2: boolean = false;
@@ -27,6 +32,8 @@ export class OrderComponent implements OnInit {
   panelOpenState = false;
 
   discussForm: FormGroup | undefined;
+
+  acceptForm: FormGroup | undefined;
 
   //Function
   constructor(private http: HttpClient, private router: Router) {}
@@ -45,28 +52,75 @@ export class OrderComponent implements OnInit {
 
   refreshBtn() {
     this.orders = [];
+    this.inputDate = '';
     this.ngOnInit();
   }
 
-  acceptOrder(id: string) {
-    this.loading2 = true;
-    this.http.post(this.baseApiUrl + '/order/accept/' + id, {}).subscribe({
-      next: (response) => {
-        alert('Accept successfully!');
-        this.loading2 = false;
-        this.refreshBtn();
-      },
-      error: (orders) => {
-        console.log(orders);
-        alert('Something went wrong! Please try again later 😢');
-      },
-    });
+  convert() {
+    const date = new Date(this.inputDate);
+    const year = date.getFullYear();
+    const month = this.padZero(date.getMonth() + 1);
+    const day = this.padZero(date.getDate());
+
+    this.convertedDate = `${year}-${month}-${day}`;
+  }
+
+  private padZero(value: number): string {
+    return value < 10 ? `0${value}` : value.toString();
+  }
+
+  formatNumber(numberToFormat: any) {
+    if (numberToFormat !== null) {
+      const decimalPipe = new DecimalPipe('en-US');
+      return decimalPipe.transform(numberToFormat, '1.0-0');
+    }
+    else {
+      return ''; 
+    }
+  }
+
+  acceptOrder(id: string, deliveryDate: string) {
+    if (deliveryDate != '') {
+      this.acceptForm = new FormGroup({
+        deliveryDate: new FormControl(deliveryDate),
+      });
+      this.loading = true;
+      this.http
+        .post(
+          this.baseApiUrl + '/order/accept/' + id,
+          this.acceptForm.getRawValue()
+        )
+        .subscribe({
+          next: (response) => {
+            alert('Accept successfully!');
+            this.loading = false;
+            this.refreshBtn();
+          },
+          error: (orders) => {
+            console.log(orders);
+            alert('Something went wrong! Please try again later 😢');
+          },
+        });
+    } else {
+      this.loading = true;
+      this.http.post(this.baseApiUrl + '/order/accept/' + id, {}).subscribe({
+        next: (response) => {
+          alert('Accept successfully!');
+          this.loading = false;
+          this.refreshBtn();
+        },
+        error: (orders) => {
+          console.log(orders);
+          alert('Something went wrong! Please try again later 😢');
+        },
+      });
+    }
   }
 
   deleteOrder(id: string, reason: string) {
     let confirmAction = confirm('Are you sure to decline this order?');
     if (confirmAction) {
-      this.loading2 = true;
+      this.loading = true;
       this.http
         .delete(
           this.baseApiUrl + '/order/cancel/' + id + '?reason=' + reason,
@@ -76,7 +130,7 @@ export class OrderComponent implements OnInit {
           next: (response) => {
             this.router.navigate(['order']);
             alert('Decline successfully!');
-            this.loading2 = false;
+            this.loading = false;
             this.refreshBtn();
           },
           error: (orders) => {
@@ -90,7 +144,7 @@ export class OrderComponent implements OnInit {
   }
 
   discussOrder(id: string, dealPrice: string, dealAmount: string) {
-    this.loading2 = true;
+    this.loading = true;
     this.discussForm = new FormGroup({
       id: new FormControl(id),
       dealPrice: new FormControl(dealPrice),
@@ -110,7 +164,7 @@ export class OrderComponent implements OnInit {
           tap({
             next: (response: any) => {
               console.log(response);
-              this.loading2 = false;
+              this.loading = false;
               alert(
                 'The new discussion is successful. Please wait for the merchant!'
               );

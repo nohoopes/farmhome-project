@@ -1,13 +1,14 @@
 <div class="history-container">
   <div class="history-head">
-    <p>{{ today | date : "dd/MM/yyyy" }}</p>
+    <p>{{ today | date : "MM/dd/yyyy" }}</p>
     <div class="history-head-btn">
       <button class="add-product-btn" id="refresh" style="width: 80px" (click)="refreshBtn()">
         Refresh
       </button>
     </div>
   </div>
-  <img class ="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading" style="display: block;  margin-left: auto;  margin-right: auto;" />
+  <img class="loading-fruit" src="../../../assets/images/healthy-food-unscreen.gif" *ngIf="loading"
+    style="display: block; margin-left: auto; margin-right: auto" />
   <div class="history-cards">
     <ng-container *ngFor="let o of history; let i = index">
       <div class="history-card-full">
@@ -15,20 +16,40 @@
           <div class="h-col-1">
             <img class="history-img" src="{{ o.fruit.images[0].url }}" />
             <h2 class="history-id">#{{ o.id }}</h2>
-          </div>  
+          </div>
           <div class="history-info">
             <h2>{{ o.fruit.name }}</h2>
             <ul>
               <li>
-                Amount <b><br> {{ o.amount }} </b>
+                Amount
+                <b><br />
+                  {{ o.amount }}
+                </b>
               </li>
               <li>
-                Price <b><br> {{ o.price }}000 </b>
+                Price
+                <b><br />
+                  {{ o.price }}000
+                </b>
               </li>
-              <li>Transport {{ o.transport ? "Yes" : "No" }}</li>
-              <li>Date {{ o.date | date : "dd/MM/yyyy" }}</li>
+              <li>
+                Transport <br /><b>{{ o.transport ? "Yes" : "No" }}</b>
+              </li>
+              <li>
+                Date <br /><b> {{ o.date | date : "MM/dd/yyyy" }}</b>
+              </li>
+              <li *ngIf="o.deliveryDate != ''">
+                Delivery date <br /><b>{{
+                  o.deliveryDate | date : "MM/dd/yyyy"
+                  }}</b>
+              </li>
+              <li *ngIf="o.deliveryDate === null">
+                Delivery date <br /><b>{{ o.date | date : "MM/dd/yyyy" }}</b>
+              </li>
             </ul>
-            <h2 style="margin-top: -15px">Total: {{totalPrice(o.amount, o.price)}}đ</h2>
+            <h2 style="margin-top: -15px">
+              Total: {{ totalPrice(o.amount, o.price) }}đ
+            </h2>
           </div>
           <div class="merchant-info">
             <h2>{{ o.merchant.firstName }} {{ o.merchant.lastName }}</h2>
