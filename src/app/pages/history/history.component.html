@@ -38,7 +38,7 @@
               <li>
                 Date <br /><b> {{ o.date | date : "MM/dd/yyyy" }}</b>
               </li>
-              <li *ngIf="o.deliveryDate != ''">
+              <li *ngIf="o.deliveryDate != null">
                 Delivery date <br /><b>{{
                   o.deliveryDate | date : "MM/dd/yyyy"
                   }}</b>
