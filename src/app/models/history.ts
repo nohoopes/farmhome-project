@@ -8,4 +8,5 @@ export class History {
     transport?:boolean = true;
     date?:string = "";
     deliveryDate?:string = "";
+    status?: any;
   }

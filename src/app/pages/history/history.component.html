@@ -15,7 +15,11 @@
         <div class="history-card">
           <div class="h-col-1">
             <img class="history-img" src="{{ o.fruit.images[0].url }}" />
-            <h2 class="history-id">#{{ o.id }}</h2>
+            <h2 class="history-id">#{{ o.id }} {{o.status.name}} </h2>
+            <img class="loading-fruit" src="../../../assets/images/truck.gif"
+              *ngIf="o.status.name==='Delivering'" style="display: block; margin-left: auto; margin-right: auto; width: 40px; border-radius: 50%;" />
+              <img class="loading-fruit" src="../../../assets/images/checked.png"
+              *ngIf="o.status.name==='Completed'" style="display: block; margin-left: auto; margin-right: auto; width: 40px; border-radius: 50%;" />
           </div>
           <div class="history-info">
             <h2>{{ o.fruit.name }}</h2>

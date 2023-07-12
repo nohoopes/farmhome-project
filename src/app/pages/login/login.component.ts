@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
             const userId = response.idUser;
             const avatar = response.avatar;
         
-            // Lưu AccessToken và UserID vào Local Storage
+            // Save AccessToken and UserID to Local Storage
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userId', userId);
             localStorage.setItem('avatar', avatar);
@@ -111,6 +111,65 @@ export class LoginComponent implements OnInit {
           error: (error: any) => {
             console.log(error);
             alert(error.message);
+          },
+        })
+      )
+      .subscribe();
+  }
+
+  registerFarmhome(
+    username: string,
+    password: string,
+    confirmPassword: string,
+    firstName: string,
+    lastName: string,
+    birthDay: string,
+    email: string,
+    phone: string,
+    address: string,
+    ward: string,
+  ) {
+    var formData: any = new FormData();
+    if (this.imageUrl != '') {
+      formData.append('avatar', this.selectedFile, this.selectedFile.name);
+    }
+    formData.append(
+      'user',
+      JSON.stringify({
+        username: username,
+        password: password,
+        confirmPassword: confirmPassword,
+        firstName: firstName,
+        lastName: lastName,
+        birthDay: birthDay,
+        email: email,
+        phone: phone,
+        status: {
+            id: 1
+        },
+        location: {
+            address: address,
+            ward: { 
+                id: ward
+            }
+        }
+      })
+    );
+    console.log(formData);
+    this.loading = true;
+    this.http
+      .post(this.baseApiUrl + '/admin/user/createFarmer', formData)
+      .pipe(
+        tap({
+          next: (response: any) => {
+            console.log(response);
+            alert('Sign up successfully! Please login and enjoy!!!');
+            this.loading = false;
+            this.loginFarmhome(username, password);
+          },
+          error: (error: any) => {
+            console.log(error);
+            alert('error');
           },
         })
       )
