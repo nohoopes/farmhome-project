@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    this.loading = false;
     this.provinces = this.places.map((place) => ({
       province: place.province,
       province_code: place.province_code,
@@ -110,7 +111,8 @@ export class LoginComponent implements OnInit {
           },
           error: (error: any) => {
             console.log(error);
-            alert(error.message);
+            alert(error.error.message);
+            this.ngOnInit();
           },
         })
       )
@@ -130,7 +132,7 @@ export class LoginComponent implements OnInit {
     ward: string,
   ) {
     var formData: any = new FormData();
-    if (this.imageUrl != '') {
+    if (this.selectedFile != null) {
       formData.append('avatar', this.selectedFile, this.selectedFile.name);
     }
     formData.append(
@@ -155,7 +157,6 @@ export class LoginComponent implements OnInit {
         }
       })
     );
-    console.log(formData);
     this.loading = true;
     this.http
       .post(this.baseApiUrl + '/admin/user/createFarmer', formData)
@@ -169,7 +170,8 @@ export class LoginComponent implements OnInit {
           },
           error: (error: any) => {
             console.log(error);
-            alert('error');
+            alert(JSON.stringify(error.error));
+            this.ngOnInit();
           },
         })
       )

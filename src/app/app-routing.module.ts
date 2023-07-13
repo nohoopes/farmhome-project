@@ -9,6 +9,7 @@ import { OrderComponent } from './pages/order/order.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { OverviewComponent } from './pages/overview/overview.component';
 
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'overview', component: OverviewComponent },
 ];
 
 

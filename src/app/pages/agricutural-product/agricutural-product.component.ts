@@ -54,6 +54,7 @@ export class AgricuturalProductComponent implements OnInit {
     this.products = [];
     this.imageUrl = '';
     this.ngOnInit();
+    this.loading2 = false;
   }
 
   openAddProductDialog() {
@@ -143,7 +144,8 @@ export class AgricuturalProductComponent implements OnInit {
           },
           error: (error: any) => {
             console.log(error);
-            alert('Something went wrong! Please try again later 😢');
+            alert(error.message);
+            this.refreshBtn();
           },
         })
       )
@@ -162,8 +164,9 @@ export class AgricuturalProductComponent implements OnInit {
         },
         error: (products) => {
           console.log(products);
-          alert('Something went wrong! Please try again later 😢');
+          alert(products.message);
           this.loading2 = false;
+          this.refreshBtn();
         },
       });
     } else {

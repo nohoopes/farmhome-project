@@ -116,7 +116,7 @@ export class ProfileComponent implements OnInit {
   updateUser(fname: string, lname: string, bdate: string, email: string, phone: string, address: string, ward: string) {
     this.loading = true;
     var formData: any = new FormData();
-    if (this.imageUrl != '') {
+    if (this.selectedFile != null) {
       formData.append('avatar', this.selectedFile, this.selectedFile.name);
     }
     formData.append(
@@ -153,6 +153,7 @@ export class ProfileComponent implements OnInit {
           error: (error: any) => {
             console.log(error);
             alert(error.message);
+            this.ngOnInit();
           },
         })
       )

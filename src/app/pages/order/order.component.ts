@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { error } from 'jquery';
 import { tap } from 'rxjs';
 import { Order } from 'src/app/models/orders';
 
@@ -96,9 +97,9 @@ export class OrderComponent implements OnInit {
             this.loading = false;
             this.refreshBtn();
           },
-          error: (orders) => {
-            console.log(orders);
-            alert('Something went wrong! Please try again later 😢');
+          error: (error:any) => {
+            alert(error.message);
+            this.refreshBtn();
           },
         });
     } else {
@@ -109,9 +110,9 @@ export class OrderComponent implements OnInit {
           this.loading = false;
           this.refreshBtn();
         },
-        error: (orders) => {
-          console.log(orders);
-          alert('Something went wrong! Please try again later 😢');
+        error: (error: any) => {
+          alert(error.message);
+          this.refreshBtn();
         },
       });
     }
@@ -133,9 +134,9 @@ export class OrderComponent implements OnInit {
             this.loading = false;
             this.refreshBtn();
           },
-          error: (orders) => {
-            console.log(orders);
-            alert('Something went wrong! Please try again later 😢');
+          error: (error:any) => {
+            alert(error);
+            this.refreshBtn();
           },
         });
     } else {
@@ -172,7 +173,8 @@ export class OrderComponent implements OnInit {
             },
             error: (error: any) => {
               console.log(error);
-              alert('Something went wrong! Please try again later 😢');
+              alert(error);
+              this.refreshBtn();
             },
           })
         )

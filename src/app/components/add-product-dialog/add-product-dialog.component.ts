@@ -73,9 +73,12 @@ export class AddProductDialogComponent implements OnInit {
     season: any,
     category: any
   ) {
-    this.loading = true;
+    if(name !=='' && weight !==''&& description !==''&&season != '' && category != '') {
+      this.loading = true;
     var formData: any = new FormData();
-    formData.append('images', this.selectedFile, this.selectedFile.name);
+    if (this.imageUrl != '') {
+      formData.append('images', this.selectedFile, this.selectedFile.name);
+    }
     formData.append(
       'fruit',
       JSON.stringify({
@@ -104,15 +107,23 @@ export class AddProductDialogComponent implements OnInit {
           error: (error: any) => {
             console.log(error);
             alert(error.message);
+            this.loading = false;
+            this.dialog.closeAll();
           },
         })
       )
       .subscribe();
+    }
+    else {
+      alert("Please fill all the input and try again!")
+    }
   }
 
   predictForm() {
     var formData: any = new FormData();
-    formData.append('image', this.selectedFile, this.selectedFile.name);
+    if (this.selectedFile != null) {
+      formData.append('image', this.selectedFile, this.selectedFile.name);
+    }
     console.log(formData);
     this.http
       .post(
@@ -135,8 +146,10 @@ export class AddProductDialogComponent implements OnInit {
           error: (error) => {
             console.log(error);
             alert(
-              'Something went wrong! Please check the input or try again later 😢'
+              error.message
             );
+            this.loading = false;
+            this.dialog.closeAll();
           },
         })
       )

@@ -20,6 +20,8 @@
               *ngIf="o.status.name==='Delivering'" style="display: block; margin-left: auto; margin-right: auto; width: 40px; border-radius: 50%;" />
               <img class="loading-fruit" src="../../../assets/images/checked.png"
               *ngIf="o.status.name==='Completed'" style="display: block; margin-left: auto; margin-right: auto; width: 40px; border-radius: 50%;" />
+              <img class="loading-fruit" src="../../../assets/images/cancel.png"
+              *ngIf="o.status.name==='Failed'" style="display: block; margin-left: auto; margin-right: auto; width: 40px; border-radius: 50%;" />
           </div>
           <div class="history-info">
             <h2>{{ o.fruit.name }}</h2>

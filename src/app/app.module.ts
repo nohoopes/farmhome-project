@@ -45,6 +45,7 @@ import { HistoryComponent } from './pages/history/history.component';
 import { PlacesTestComponent } from './components/places-test/places-test.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TokenInterceptor } from './interceptor/token-interceptor';
+import { OverviewComponent } from './pages/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { TokenInterceptor } from './interceptor/token-interceptor';
     HistoryComponent,
     PlacesTestComponent,
     ProfileComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,

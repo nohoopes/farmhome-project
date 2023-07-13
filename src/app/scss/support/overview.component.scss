@@ -1,0 +1,118 @@
+.overview-container {
+  width: 1340px;
+  height: 600px;
+  background: #fcfaf7;
+  border-radius: 20px;
+  position: relative;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .history-head {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: -75px;
+    margin-bottom: 65px;
+
+    p {
+      margin-top: 15px;
+      margin-left: 15px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .add-product-btn {
+      border: none;
+      background: #2d473f;
+      color: #fef4e3;
+      font-weight: 500;
+      width: 160px;
+      height: 40px;
+      border-radius: 10px;
+      float: right;
+      margin-top: 15px;
+      margin-right: 15px;
+      transition-duration: 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+        background: #1f322c;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+
+  .history-body{
+    display: flex;
+    flex-direction: row;
+    
+  .card {
+    width: 260px;
+    height: 400px;
+    background-image: linear-gradient(144deg, #0a2507, #1f5f17 60%, #1eaf37);
+    border: none;
+    border-radius: 10px;
+    padding-top: 10px;
+    position: relative;
+    margin: auto;
+    font-family: inherit;
+    transition-duration: 1s;
+
+    span {
+      font-weight: 600;
+      color: white;
+      text-align: center;
+      display: block;
+      padding-top: 10px;
+      font-size: 1.3em;
+    }
+
+    .job {
+      font-weight: 400;
+      color: white;
+      display: block;
+      text-align: center;
+      padding-top: 15px;
+      font-size: 1.5em;
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      margin: auto;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 8px 25px;
+      display: block;
+      margin: auto;
+      border-radius: 8px;
+      border: none;
+      margin-top: 30px;
+      background: #e8e8e8;
+      color: #111111;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #212121;
+      color: #ffffff;
+    }
+    &:hover {
+        transform: scale(1.2);
+        transition-duration: 1s;
+      }
+  }
+
+
+  }
+
+
+}
