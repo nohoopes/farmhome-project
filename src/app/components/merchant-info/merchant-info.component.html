@@ -1,0 +1,55 @@
+<mat-dialog-content class="merchant-container">
+    <div class="merchant-container__col1">
+        <img src="{{data.avatar}}" />
+        <div class="predict-area">
+            <h4 id="predict-text">#{{data.id}}</h4>
+            <h4 id="predict-text" style="color: #08da2b;">Active</h4>
+            <h4 id="predict-text">Join date: {{data.createDate}}</h4>
+        </div>
+        <div class="predict-area">
+            <h4 id="predict-text">Completed orders</h4>
+            <h4 id="predict-text">99</h4>
+        </div>
+    </div>
+    <div class="merchant-container__col2">
+        <div class="merchant-container__col2__row2">
+            <div class="input-product-info">
+                <label class="add-p-label" for="add-p-name">Merchant name</label>
+                <input type="text" [value]="data.firstName" id="add-p-name" name="add-p-name" readonly />
+            </div>
+            <div class="input-product-info">
+                <label class="add-p-label" for="add-p-name" style="visibility: hidden;">Merchant name</label>
+                <input type="text" [value]="data.lastName" id="add-p-name" name="add-p-name" readonly />
+            </div>
+        </div>
+        <div class="merchant-container__col2__row2">
+            <div class="input-product-info">
+                <label class="add-p-label" for="add-p-weight">Birthday</label>
+                <input type="text" id="add-p-weight" [value]="data.birthDay " name="add-p-weight" readonly />
+            </div>
+            <div class="input-product-info">
+                <label class="add-p-label" for="add-p-season">Phone</label>
+                <input type="text" id="add-p-weight" [value]="data.phone" name="add-p-weight" readonly />
+            </div>
+        </div>
+        <div class="input-product-info">
+            <label class="add-p-label" for="add-p-name">Email</label>
+            <input type="text" id="add-p-name" [value]="data.email" name="add-p-name" readonly />
+        </div>
+        <div class="input-product-info">
+            <label class="add-p-label" for="add-p-description">Location</label>
+            <textarea required
+                readonly>{{data.location.address}}, {{data.location.ward.name}}, {{data.location.ward.district.name}}, {{data.location.ward.district.province.name}}</textarea>
+        </div>
+        <div class="input-product-info">
+            <label class="add-p-label" for="add-p-description">Description</label>
+            <textarea style="height: 90px !important" required readonly></textarea>
+        </div>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-end" style="background: #f3eee4;" align="end">
+    <div mat-dialog-actions class="merchant-container__col2__row2">
+        <button mat-dialog-close id="cancel-p-btn">Cancel</button>
+    </div>
+</mat-dialog-actions>

@@ -2,10 +2,13 @@ import { DecimalPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { error } from 'jquery';
 import { tap } from 'rxjs';
+import { MerchantInfoComponent } from 'src/app/components/merchant-info/merchant-info.component';
 import { Order } from 'src/app/models/orders';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-order',
@@ -19,6 +22,8 @@ export class OrderComponent implements OnInit {
   size: any;
 
   orders: Order[] = [];
+
+  user = User;
 
   today: Date = new Date();
 
@@ -37,7 +42,7 @@ export class OrderComponent implements OnInit {
   acceptForm: FormGroup | undefined;
 
   //Function
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -68,6 +73,19 @@ export class OrderComponent implements OnInit {
 
   private padZero(value: number): string {
     return value < 10 ? `0${value}` : value.toString();
+  }
+
+  openMerchantDialog(mid:string) {
+    this.http.get(this.baseApiUrl + '/user/id/' + mid).subscribe((res: any) => {
+      this.user = res;
+      const dialogConfig: MatDialogConfig = {
+        data: this.user,
+        disableClose: true,
+      };
+      console.log(this.user);
+      const dialogRef = this.dialog.open(MerchantInfoComponent, dialogConfig);
+    });
+
   }
 
   formatNumber(numberToFormat: any) {

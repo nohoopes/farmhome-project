@@ -1,0 +1,130 @@
+.testing-container {
+    overflow: hidden;
+    width: 700px;
+    height: 515px;
+    background: #f3eee4;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 30px;
+
+    button {
+        border: none;
+        width: 110px;
+        border-radius: 5px;
+        padding: 6px 3px;
+        font-weight: 600;
+        color: #fff;
+        transition-duration: 0.5s;
+        margin-top: 1px;
+    }
+
+    &__col1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            background: #f7f3ec;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+
+        .predict-area {
+            width: 100%;
+            height: 90px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            background: #fff;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            #predict-text {
+                font-weight: 500;
+                margin-bottom: 2px;
+                color: #000;
+            }
+        }
+
+        #predict-btn {
+            margin-top: 15px;
+            background: #255258;
+
+            &:hover {
+                transform: scale(1.05);
+                background: #18363a;
+            }
+        }
+    }
+
+    &__col2 {
+        &__row2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            #cancel-p-btn {
+                float: right;
+                margin-left: 320px;
+                background: #ab2c2c;
+
+                &:hover {
+                    transform: scale(1.05);
+                    background: #751a1a;
+                }
+            }
+        }
+
+        .input-product-info {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+
+            .add-p-label {
+                font-weight: 700;
+                font-size: 12pt;
+                color: #000;
+            }
+
+            input,
+            select,
+            p,
+            textarea {
+                margin-top: 5px;
+                border: none;
+                border-radius: 5px;
+                box-sizing: border-box;
+                background: #ffffff;
+                height: 30px;
+                padding: 10px;
+                font-size: 10pt;
+            }
+
+            select,
+            p {
+                width: 200px;
+                padding: 0 0 0 5px !important;
+            }
+
+            p {
+                width: 200px;
+                padding: 5px 0 0 5px !important;
+            }
+
+            textarea {
+                height: 60px !important;
+                resize: none;
+            }
+        }
+    }
+}

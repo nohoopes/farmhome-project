@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { TestComponent } from './pages/test/test.component';
 
 const routes: Routes = [
 { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'overview', component: OverviewComponent },
+  { path: 'testing', component: TestComponent },
 ];
 
 

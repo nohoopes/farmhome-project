@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MerchantInfoComponent } from './merchant-info.component';
+
+describe('MerchantInfoComponent', () => {
+  let component: MerchantInfoComponent;
+  let fixture: ComponentFixture<MerchantInfoComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ MerchantInfoComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(MerchantInfoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

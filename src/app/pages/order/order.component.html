@@ -75,7 +75,7 @@
                   {{ o.merchant.location.ward.district.name }},
                   {{ o.merchant.location.ward.district.province.name }}
                 </h3>
-                <img class="merchant-img" src="{{ o.merchant.avatar }}" />
+                <img class="merchant-img" src="{{ o.merchant.avatar }}" (click)="openMerchantDialog(o.merchant.id)"/>
               </div>
             </div>
             <mat-accordion>

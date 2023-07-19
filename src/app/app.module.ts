@@ -46,6 +46,8 @@ import { PlacesTestComponent } from './components/places-test/places-test.compon
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TokenInterceptor } from './interceptor/token-interceptor';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { TestComponent } from './pages/test/test.component';
+import { MerchantInfoComponent } from './components/merchant-info/merchant-info.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { OverviewComponent } from './pages/overview/overview.component';
     PlacesTestComponent,
     ProfileComponent,
     OverviewComponent,
+    TestComponent,
+    MerchantInfoComponent,
   ],
   imports: [
     BrowserModule,
