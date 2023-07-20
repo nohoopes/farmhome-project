@@ -53,6 +53,7 @@ export class AgricuturalProductComponent implements OnInit {
   refreshBtn() {
     this.products = [];
     this.imageUrl = '';
+    this.images = null;
     this.ngOnInit();
     this.loading2 = false;
   }
@@ -113,8 +114,12 @@ export class AgricuturalProductComponent implements OnInit {
     category: string
   ) {
     var formData: any = new FormData();
-    if (this.imageUrl != '') {
-      formData.append('images', this.selectedFile, this.selectedFile.name);
+    // if (this.imageUrl != '') {
+    //   formData.append('images', this.selectedFile, this.selectedFile.name);
+    // }
+    if (!this.images) return;
+    for (let i = 0; i < this.images.length; i++) {
+      formData.append('images', this.images[i]);
     }
     formData.append(
       'fruit',
@@ -173,4 +178,32 @@ export class AgricuturalProductComponent implements OnInit {
       alert('Action canceled');
     }
   }
+
+
+  //multi images
+  images: FileList | null = null;;
+  imageUrls: string[] = [];
+
+  onImageSelected(event: any) {
+    this.images = event.target.files;
+    this.imageUrls = [];
+    if (this.images) {
+      for (let i = 0; i < this.images.length; i++) {
+        const file = this.images[i];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (e.target) {
+            this.imageUrls.push(e.target.result as string);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
+  getImageURL(image: File): string {
+    const imageIndex = Array.from(this.images!).indexOf(image);
+    return this.imageUrls[imageIndex];
+  }
+
 }

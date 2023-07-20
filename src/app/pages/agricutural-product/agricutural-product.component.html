@@ -55,9 +55,19 @@
             </mat-expansion-panel-header>
             <div class="collapse-p-content" style="margin-top: 10px">
               <div class="add-product-container__col1">
-                <img *ngIf="imageUrl" [src]="imageUrl" />
-                <input (change)="onFileSelected($event)" type="file" id="myUPImg" name="myUPImg" />
-                <label for="myUPImg" class="custom-file-upload">Change Image</label>
+                <input id="myUPImg" name="myUPImg" type="file" (change)="onImageSelected($event)" multiple>
+                <label for="myUPImg" class="custom-file-upload">Upload Image</label>
+                <div *ngIf="imageUrls.length > 0">
+                  <ul style="list-style-type: none; display: flex; margin-left: -30px;">
+                    <li *ngFor="let imageUrl of imageUrls">
+                      <img style="width: 50px; height: 50px; margin: 5px" [src]="imageUrl" alt="Uploaded Image" />
+                    </li>
+                  </ul>
+                </div>    
+              </div>
+
+              <div class="add-product-container__col1">
+
               </div>
               <div class="add-product-container__col2">
                 <div class="input-product-info">
